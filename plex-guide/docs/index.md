@@ -157,6 +157,7 @@ The server's Plex Pass enables for **all users**:
 
 A personal Plex Pass ($5/month, $40/year, or $120 lifetime) gives you features the server can't provide:
 
+<!-- markdownlint-disable MD055 MD056 -->
 | Feature | Description |
 |---------|-------------|
 {% if has_plex_home %}| **Skip Intro/Credits** | If you're not in Plex Home, get this feature with your own pass |
@@ -166,6 +167,7 @@ A personal Plex Pass ($5/month, $40/year, or $120 lifetime) gives you features t
 | **Free Mobile App** | No $5 unlock fee for iPhone/Android apps |
 | **Early Access** | Try new Plex features before everyone else |
 | **Plexamp Premium** | Enhanced music player features |
+<!-- markdownlint-enable MD055 MD056 -->
 
 !!! tip "Is Plex Pass Worth It?"
     **Most users: yes.** The $120 lifetime pass pays for itself quickly. You get Skip Intro/Credits on every show, offline downloads for travel, and free mobile apps. The $40/year option is good if you want to try it first.
