@@ -22,10 +22,12 @@ theme:
         name: Switch to dark mode
   features:
     - navigation.sections
+    - navigation.instant
     - toc.follow
     - search.suggest
     - search.highlight
     - content.code.copy
+    - content.code.annotate
     - content.tabs.link
 
 plugins:
