@@ -99,6 +99,7 @@ For more device setup help, see [Plex's official app guide](https://support.plex
 ---
 
 {% if has_request_system %}
+
 ## Requesting Movies and Shows
 
 Can't find something? Request it!
@@ -139,6 +140,7 @@ If the sound is off, subtitles are missing, or video looks bad:
 {% endif %}
 
 {% if has_plex_pass %}
+
 ### Plex Pass - What You Get
 
 The server has a Plex Pass subscription. **You don't need to buy Plex Pass yourself** to watch content.
