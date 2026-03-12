@@ -1,0 +1,54 @@
+name: Bug Report
+description: Report a problem with a template
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: template
+    attributes:
+      label: Template
+      description: Which template is affected?
+      options:
+        - Plex Guide
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce this?
+      placeholder: |
+        1. Clone the repo
+        2. Run setup.sh
+        3. ...
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Configuration
+      description: Relevant parts of your `extra:` config (remove any personal info).
+      render: yaml
+
+  - type: input
+    id: mkdocs-version
+    attributes:
+      label: MkDocs version
+      description: Output of `mkdocs --version`
+      placeholder: "mkdocs, version 1.6.x"
