@@ -1,20 +1,15 @@
----
 version: 2
 updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
-    labels:
-      - dependencies
     commit-message:
       prefix: "ci"
-
   - package-ecosystem: pip
     directory: /plex-guide
     schedule:
       interval: weekly
-    labels:
-      - dependencies
     commit-message:
       prefix: "chore"
+
