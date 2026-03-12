@@ -437,7 +437,7 @@ If your smart TV struggles with Plex, consider a dedicated streaming device. The
 
 ---
 
-{% if has_4k_content | default(true) %}
+{% if has_direct_play | default(true) %}
 ## Direct Play (Best Quality)
 
 **Direct play** means your device plays the video file exactly as-is, with no conversion by the server. This always gives you the best experience:
@@ -488,6 +488,9 @@ Common reasons for transcoding:
 - Device doesn't support the video codec (HEVC/H.265)
 - Device doesn't support the audio codec — try switching to a compatible audio track
 - Image-based subtitles (PGS/ASS) being burned in — try SRT subtitles instead
+
+{% endif %}
+{% if has_4k_content | default(true) %}
 
 ---
 

@@ -116,7 +116,8 @@ Set to `true` to show the section, `false` to hide it.
 | `guide_url` | `""` | Public URL for the guide |
 | `has_plex_pass` | `true` | Plex Pass features section |
 | `has_plex_home` | `false` | Plex Home notes |
-| `has_4k_content` | `true` | 4K direct play optimization guide |
+| `has_direct_play` | `true` | Direct play optimization guide |
+| `has_4k_content` | `true` | 4K streaming section |
 | `has_migration` | `false` | Watch history migration section |
 | `show_costs` | `false` | Server cost information |
 | `server_cost` | `""` | Monthly cost string |
