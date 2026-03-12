@@ -437,6 +437,106 @@ If your smart TV struggles with Plex, consider a dedicated streaming device. The
 
 ---
 
+{% if has_4k_content | default(true) %}
+## Direct Play (Best Quality)
+
+**Direct play** means your device plays the video file exactly as-is, with no conversion by the server. This always gives you the best experience:
+
+- **Best quality** — you see exactly what was encoded
+- **No server load** — the server just sends the file
+- **Faster start** — no waiting for the server to process
+
+When direct play isn't possible, the server **transcodes** (converts) the video in real-time, which uses server resources and can reduce quality.
+
+### How to Get Direct Play
+
+#### Set Quality to Maximum/Original
+
+The most common reason for unnecessary transcoding is the quality setting being too low.
+
+=== "On Your TV/Streaming Device"
+
+    1. Open the Plex app
+    2. Go to **Settings** → **Video Quality**
+    3. Set **Remote Streaming** to **Original** or **Maximum**
+    4. Set **Home Streaming** to **Original** or **Maximum**
+
+=== "On Your Phone/Tablet"
+
+    1. Open Plex → **Settings** (gear icon)
+    2. Tap **Quality**
+    3. Set **Remote Streaming** to **Maximum**
+    4. Set **Home Streaming** to **Maximum**
+
+#### Use the Native Plex App
+
+!!! warning "Web Browsers Force Transcoding"
+    Browsers (Chrome, Firefox, Safari) don't support most video codecs and will force the server to transcode. Always use the **native Plex app** on your device.
+
+#### Check if You're Direct Playing
+
+While watching a video:
+
+1. Press the **info** button (or tap **...** on mobile)
+2. Look for **"Direct Play"** — this means no transcoding
+3. If it says **"Transcode"**, something is preventing direct play
+
+Common reasons for transcoding:
+
+- Quality set below **Original/Maximum** (most common!)
+- Watching in a web browser instead of the Plex app
+- Device doesn't support the video codec (HEVC/H.265)
+- Device doesn't support the audio codec — try switching to a compatible audio track
+- Image-based subtitles (PGS/ASS) being burned in — try SRT subtitles instead
+
+---
+
+## 4K Streaming
+
+4K movies look incredible, but they're **massive files** — a single 4K movie can be 50-80 GB. This creates unique challenges.
+
+!!! danger "Never Transcode 4K"
+    Transcoding 4K defeats the purpose — you get **worse quality** than just watching the 1080p version, while also hammering the server. If your device can't direct play 4K, watch the 1080p version instead.
+
+### Can Your Device Handle 4K?
+
+| Device | 4K Direct Play | HDR | Lossless Audio |
+|--------|:-:|:-:|:-:|
+| **Nvidia Shield TV Pro** | Yes | Yes | Yes |
+| **Apple TV 4K** | Yes | Yes | Partial |
+| **Fire TV Stick 4K Max** | Yes | Yes | No |
+| **Onn 4K Google TV** | Yes | Yes | No |
+| **Most Smart TVs** | Varies | Varies | No |
+| **Web Browser** | No | No | No |
+
+### Bandwidth Requirements
+
+4K content requires significantly more internet speed than HD:
+
+| Quality | Minimum Speed Needed |
+|---------|---------------------|
+| 1080p | 10-20 Mbps |
+| 4K SDR | 25-40 Mbps |
+| 4K HDR | 40-80 Mbps |
+| 4K Remux | 80-120+ Mbps |
+
+Test your speed at [fast.com](https://fast.com). If your speed is below the requirement, Plex will transcode the video automatically — and for 4K, that means worse quality than 1080p.
+
+!!! tip "Use Ethernet for 4K"
+    WiFi is unreliable for 4K streaming. A wired ethernet connection to your streaming device is the single best improvement you can make.
+
+### Quick Reference
+
+| Do This | Not This |
+|---------|----------|
+| Use the native Plex app | Watch in a web browser |
+| Set quality to **Original/Maximum** | Leave it on "auto" or a lower setting |
+| Use ethernet for 4K | Rely on WiFi for large files |
+| Watch 1080p if 4K transcodes | Force 4K on a device that can't handle it |
+
+{% endif %}
+---
+
 ## More Help
 
 | Resource | Link |

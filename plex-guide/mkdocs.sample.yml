@@ -69,6 +69,7 @@ extra:
   guide_url: ""                           # Public URL for this guide
   has_plex_pass: true                     # Whether your server has a Plex Pass
   has_plex_home: false                    # Whether you use Plex Home for some users
+  has_4k_content: true                    # Whether to show 4K/direct play optimization section
   has_migration: false                    # Whether you offer watch history migration
   show_costs: false                       # Whether to show server cost information
   server_cost: ""                         # Monthly server cost (e.g., "~$50/month")
