@@ -1,0 +1,22 @@
+# MkDocs build output
+site/
+
+# User's configured mkdocs.yml (use mkdocs.sample.yml as template)
+plex-guide/mkdocs.yml
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
