@@ -143,7 +143,7 @@ Run `mkdocs serve` for a local development server with live reload at `http://lo
 ## Contributors
 
 <a href="https://github.com/baker-scripts/docs-templates/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=baker-scripts/docs-templates" />
+  <img src="https://contrib.rocks/image?repo=baker-scripts/docs-templates" alt="Contributors" />
 </a>
 
 ## Disclaimer

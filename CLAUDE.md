@@ -21,6 +21,7 @@ MkDocs documentation templates with `mkdocs-macros-plugin` for Jinja2 variable s
 ## Development
 
 - Build: use a venv or Docker, never system-wide pip
+
   ```bash
   cd plex-guide
   python3 -m venv .venv
@@ -28,6 +29,7 @@ MkDocs documentation templates with `mkdocs-macros-plugin` for Jinja2 variable s
   cp mkdocs.sample.yml mkdocs.yml
   .venv/bin/mkdocs build
   ```
+
 - Lint: `npx markdownlint-cli2 "**/*.md"` and `shellcheck plex-guide/setup.sh`
 - CI runs markdownlint, shellcheck, yamllint on all PRs
 - GitHub Pages deploys from GHA workflow (plex guide at `/plex/` subpath)
