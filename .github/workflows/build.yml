@@ -48,11 +48,24 @@ jobs:
           cp mkdocs.sample.yml mkdocs.yml
           mkdocs build
 
+      - name: Prepare Pages structure
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          mkdir -p _site/plex
+          cp -r plex-guide/site/* _site/plex/
+          cat > _site/index.html << 'REDIRECT'
+          <!DOCTYPE html>
+          <html>
+          <head><meta http-equiv="refresh" content="0; url=plex/"></head>
+          <body><a href="plex/">Plex Guide</a></body>
+          </html>
+          REDIRECT
+
       - name: Upload artifact
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: plex-guide/site
+          path: _site
 
   deploy:
     name: Deploy to GitHub Pages

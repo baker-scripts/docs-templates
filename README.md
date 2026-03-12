@@ -6,7 +6,7 @@ MkDocs documentation templates with variable substitution. Fork, customize, and 
 
 | Template | Description | Live Preview |
 |----------|-------------|--------------|
-| [Plex Guide](plex-guide/) | User-facing guide for Plex media servers | [Preview](https://baker-scripts.github.io/docs-templates/) |
+| [Plex Guide](plex-guide/) | User-facing guide for Plex media servers | [Preview](https://baker-scripts.github.io/docs-templates/plex/) |
 
 **Coming soon:** Plan templates, runbook templates.
 
@@ -126,7 +126,7 @@ Conditional sections use `{% if feature_flag %}...{% endif %}` to show/hide cont
 
 ### GitHub Pages (automatic)
 
-This repo includes a GitHub Action that builds the template with sample values and deploys to GitHub Pages. Fork the repo, enable Pages in your fork's settings, and your guide will be available at `https://<your-username>.github.io/docs-templates/`.
+This repo includes a GitHub Action that builds the template with sample values and deploys to GitHub Pages. Fork the repo, enable Pages in your fork's settings, and your guide will be available at `https://<your-username>.github.io/docs-templates/plex/`.
 
 ### Static Hosting
 
