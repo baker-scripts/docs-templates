@@ -19,6 +19,7 @@ tags:
 
 ## Quick Links
 
+<!-- markdownlint-disable MD055 MD056 -->
 | Action | Link |
 |--------|------|
 | **Watch Now** | [{{ media_url }}](https://{{ media_url }}) |
@@ -26,6 +27,7 @@ tags:
 {% endif %}{% if has_discord %}| **Get Notifications** | [Discord]({{ discord_url }}) |
 {% endif %}{% if has_newsletter %}| **Weekly Newsletter** | [What's New]({{ newsletter_url }}) |
 {% endif %}| **Plex Help Center** | [support.plex.tv](https://support.plex.tv/articles/) |
+<!-- markdownlint-enable MD055 MD056 -->
 
 ---
 
@@ -290,109 +292,99 @@ For more help: [Plex Password Reset Guide](https://support.plex.tv/articles/acco
 
 ---
 
-### The Video Has No Sound
+??? note "The Video Has No Sound"
 
-=== "On Your TV"
+    === "On Your TV"
 
-    1. Make sure your TV isn't muted (press volume up on remote)
-    2. While playing the video, press **down arrow** on your remote
-    3. Look for **"Audio"** and select it
-    4. Try a different audio track - pick one that says "English" or "Stereo"
-    5. Avoid tracks labeled "TrueHD" or "Atmos" if you don't have a soundbar
+        1. Make sure your TV isn't muted (press volume up on remote)
+        2. While playing the video, press **down arrow** on your remote
+        3. Look for **"Audio"** and select it
+        4. Try a different audio track - pick one that says "English" or "Stereo"
+        5. Avoid tracks labeled "TrueHD" or "Atmos" if you don't have a soundbar
 
-=== "On Your Phone/Tablet"
+    === "On Your Phone/Tablet"
 
-    1. Make sure your phone isn't on silent mode
-    2. Turn your volume up
-    3. Tap the screen, then tap the **settings icon** (gear or three dots)
-    4. Select **Audio** and pick a different audio track
+        1. Make sure your phone isn't on silent mode
+        2. Turn your volume up
+        3. Tap the screen, then tap the **settings icon** (gear or three dots)
+        4. Select **Audio** and pick a different audio track
 
-**Still no sound?** Try a different movie to see if it's just that one file.
+    **Still no sound?** Try a different movie to see if it's just that one file. For more help: [Plex Audio Troubleshooting](https://support.plex.tv/articles/200430313-troubleshooting/)
 
-For more help: [Plex Audio Troubleshooting](https://support.plex.tv/articles/200430313-troubleshooting/)
+??? note "I Want Subtitles (Captions)"
 
----
+    === "On Your TV"
 
-### I Want Subtitles (Captions)
+        1. While the video is playing, press the **down arrow** on your remote
+        2. Look for **"Subtitles"** or the **subtitle icon** (box with horizontal lines)
+        3. Select it
+        4. Choose **"English"** or your preferred language
 
-=== "On Your TV"
+    === "On Your Phone/Tablet"
 
-    1. While the video is playing, press the **down arrow** on your remote
-    2. Look for **"Subtitles"** or the **subtitle icon** (box with horizontal lines)
-    3. Select it
-    4. Choose **"English"** or your preferred language
+        1. Tap the screen while watching
+        2. Tap the **settings icon** (gear or three dots, usually bottom-right)
+        3. Tap **Subtitles** and pick **"English"**
 
-=== "On Your Phone/Tablet"
+    === "On Computer"
 
-    1. Tap the screen while watching
-    2. Tap the **settings icon** (gear or three dots, usually bottom-right)
-    3. Tap **Subtitles** and pick **"English"**
+        1. While watching, move your mouse to show controls
+        2. Click the **subtitle icon** (box with horizontal lines, or "CC")
+        3. Select your subtitle language
 
-=== "On Computer"
+    {% if has_request_system %}
+    **No subtitles available?** Not all videos have subtitles. You can report the issue at [{{ request_url }}](https://{{ request_url }}).
+    {% else %}
+    **No subtitles available?** Not all videos have subtitles. Contact {{ admin_name }} to report the issue.
+    {% endif %}
 
-    1. While watching, move your mouse to show controls
-    2. Click the **subtitle icon** (box with horizontal lines, or "CC")
-    3. Select your subtitle language
+    For more help: [Plex Subtitle Guide](https://support.plex.tv/articles/subtitle-search/)
 
-{% if has_request_system %}
-**No subtitles available?** Not all videos have subtitles. You can report the issue at [{{ request_url }}](https://{{ request_url }}).
-{% else %}
-**No subtitles available?** Not all videos have subtitles. Contact {{ admin_name }} to report the issue.
-{% endif %}
+??? note "The Movie is in a Foreign Language"
 
-For more help: [Plex Subtitle Guide](https://support.plex.tv/articles/subtitle-search/)
+    The audio track might be set to another language by default.
 
----
+    1. While watching, look for **"Audio"** settings (press down arrow on TV, or tap gear icon on phone)
+    2. Change it from the foreign language to **"English"**
 
-### The Movie is in a Foreign Language
+    {% if has_request_system %}
+    **If there's no English option:** That movie might only be available in the original language. Report it at [{{ request_url }}](https://{{ request_url }}).
+    {% else %}
+    **If there's no English option:** That movie might only be available in the original language. Contact {{ admin_name }} to report the issue.
+    {% endif %}
 
-The audio track might be set to another language by default.
+??? note "The Picture Looks Bad or Blurry"
 
-1. While watching, look for **"Audio"** settings (press down arrow on TV, or tap gear icon on phone)
-2. Change it from the foreign language to **"English"**
+    This usually means the quality got lowered to prevent buffering.
 
-{% if has_request_system %}
-**If there's no English option:** That movie might only be available in the original language. Report it at [{{ request_url }}](https://{{ request_url }}).
-{% else %}
-**If there's no English option:** That movie might only be available in the original language. Contact {{ admin_name }} to report the issue.
-{% endif %}
+    === "On Your TV"
 
----
+        1. While watching, press the **down arrow**
+        2. Find **"Quality"**
+        3. Choose **"Original"** or **"Maximum"**
 
-### The Picture Looks Bad or Blurry
+    === "On Your Phone/Tablet"
 
-This usually means the quality got lowered to prevent buffering.
+        1. Tap the screen
+        2. Tap the **gear icon** or **three dots**
+        3. Tap **"Quality"**
+        4. Choose the highest option
 
-=== "On Your TV"
+    **Still blurry?** Your internet might be too slow for HD. Try:
 
-    1. While watching, press the **down arrow**
-    2. Find **"Quality"**
-    3. Choose **"Original"** or **"Maximum"**
+    - Moving closer to your WiFi router
+    - Plugging your TV into the router with a cable
+    - Testing your speed at [{{ speedtest_url | default("fast.com") }}](https://{{ speedtest_url | default("fast.com") }}) - you need 25+ Mbps for 4K
 
-=== "On Your Phone/Tablet"
+    For more help: [Plex Quality Settings](https://support.plex.tv/articles/quality-suggestions/)
 
-    1. Tap the screen
-    2. Tap the **gear icon** or **three dots**
-    3. Tap **"Quality"**
-    4. Choose the highest option
+??? note "App Crashes or Won't Open"
 
-**Still blurry?** Your internet might be too slow for HD. Try:
+    1. **Update the app** - Go to your device's app store and check for Plex updates
+    2. **Restart your device** - Turn it off and back on
+    3. **Reinstall Plex** - Delete the app and install it fresh from the app store
 
-- Moving closer to your WiFi router
-- Plugging your TV into the router with a cable
-- Testing your speed at [{{ speedtest_url | default("fast.com") }}](https://{{ speedtest_url | default("fast.com") }}) - you need 25+ Mbps for 4K
-
-For more help: [Plex Quality Settings](https://support.plex.tv/articles/quality-suggestions/)
-
----
-
-### App Crashes or Won't Open
-
-1. **Update the app** - Go to your device's app store and check for Plex updates
-2. **Restart your device** - Turn it off and back on
-3. **Reinstall Plex** - Delete the app and install it fresh from the app store
-
-For device-specific help: [Plex App Troubleshooting](https://support.plex.tv/articles/categories/player-apps-platforms/)
+    For device-specific help: [Plex App Troubleshooting](https://support.plex.tv/articles/categories/player-apps-platforms/)
 
 ---
 
@@ -437,120 +429,31 @@ If your smart TV struggles with Plex, consider a dedicated streaming device. The
 
 **Recommendation:** If you watch a lot of 4K content or have audio equipment (soundbar/receiver), get the **Nvidia Shield TV Pro**. For most people, the **Fire TV Stick 4K Max** is the sweet spot.
 
+### Device Compatibility Details
+
+Not all devices support every video/audio format. If your device can't play a file directly, the server has to convert it in real-time (transcode), which can reduce quality.
+
+| Device | 4K | HDR/DV | Lossless Audio | HEVC (H.265) |
+|--------|:--:|:------:|:--------------:|:------------:|
+| **Nvidia Shield TV Pro** | Yes | Yes | Yes | Yes |
+| **Apple TV 4K** | Yes | Yes | Partial | Yes |
+| **Fire TV Stick 4K Max** | Yes | Yes | No | Yes |
+| **Onn 4K Google TV** | Yes | Yes | No | Yes |
+| **LG Smart TV** (webOS) | Yes | HDR10/DV | No | Yes |
+| **Samsung Smart TV** (Tizen) | Yes | HDR10+ | No | Yes |
+| **Sony Smart TV** (Google TV) | Yes | HDR10/DV | No | Yes |
+| **TCL Smart TV** (Roku/Google) | Yes | HDR10/DV | No | Yes |
+| **Vizio Smart TV** (SmartCast) | Yes | HDR10/DV | No | Varies |
+| **Web Browser** | No | No | No | No |
+
 !!! tip "Want the full breakdown?"
     TRaSH Guides maintains a comprehensive [media player compatibility spreadsheet](https://trash-guides.info/Plex/what-does-my-media-player-support/) covering Dolby Vision profiles, HDR formats, audio codecs, and more across dozens of devices.
 
 ---
 
-{% if has_direct_play | default(true) %}
-## Direct Play (Best Quality)
-
-**Direct play** means your device plays the video file exactly as-is, with no conversion by the server. This always gives you the best experience:
-
-- **Best quality** — you see exactly what was encoded
-- **No server load** — the server just sends the file
-- **Faster start** — no waiting for the server to process
-
-When direct play isn't possible, the server **transcodes** (converts) the video in real-time, which uses server resources and can reduce quality.
-
-### How to Get Direct Play
-
-#### Set Quality to Maximum/Original
-
-The most common reason for unnecessary transcoding is the quality setting being too low.
-
-=== "On Your TV/Streaming Device"
-
-    1. Open the Plex app
-    2. Go to **Settings** → **Video Quality**
-    3. Set **Remote Streaming** to **Original** or **Maximum**
-    4. Set **Home Streaming** to **Original** or **Maximum**
-
-=== "On Your Phone/Tablet"
-
-    1. Open Plex → **Settings** (gear icon)
-    2. Tap **Quality**
-    3. Set **Remote Streaming** to **Maximum**
-    4. Set **Home Streaming** to **Maximum**
-
-#### Use the Native Plex App
-
-!!! warning "Web Browsers Force Transcoding"
-    Browsers (Chrome, Firefox, Safari) don't support most video codecs and will force the server to transcode. Always use the **native Plex app** on your device.
-
-#### Check if You're Direct Playing
-
-While watching a video:
-
-1. Press the **info** button (or tap **...** on mobile)
-2. Look for **"Direct Play"** — this means no transcoding
-3. If it says **"Transcode"**, something is preventing direct play
-
-Common reasons for transcoding:
-
-- Quality set below **Original/Maximum** (most common!)
-- Watching in a web browser instead of the Plex app
-- Device doesn't support the video codec (HEVC/H.265)
-- Device doesn't support the audio codec — try switching to a compatible audio track
-- Image-based subtitles (PGS/ASS) being burned in — try SRT subtitles instead
-
-{% endif %}
-{% if has_4k_content | default(true) %}
-
----
-
-## 4K Streaming
-
-4K movies look incredible, but they're **massive files** — a single 4K movie can be 50-80 GB. This creates unique challenges.
-
-!!! danger "Never Transcode 4K"
-    Transcoding 4K defeats the purpose — you get **worse quality** than just watching the 1080p version, while also hammering the server. If your device can't direct play 4K, watch the 1080p version instead.
-
-### Can Your Device Handle 4K?
-
-| Device | 4K Direct Play | HDR | Lossless Audio |
-|--------|:-:|:-:|:-:|
-| **Nvidia Shield TV Pro** | Yes | Yes | Yes |
-| **Apple TV 4K** | Yes | Yes | Partial |
-| **Fire TV Stick 4K Max** | Yes | Yes | No |
-| **Onn 4K Google TV** | Yes | Yes | No |
-| **LG Smart TV** (webOS) | Yes | HDR10/DV | No |
-| **Samsung Smart TV** (Tizen) | Yes | HDR10+ | No |
-| **Sony Smart TV** (Google TV) | Yes | HDR10/DV | No |
-| **TCL Smart TV** (Roku/Google) | Yes | HDR10/DV | No |
-| **Vizio Smart TV** (SmartCast) | Yes | HDR10/DV | No |
-| **Web Browser** | No | No | No |
-
-### Bandwidth Requirements
-
-4K content requires significantly more internet speed than HD:
-
-| Quality | Minimum Speed Needed |
-|---------|---------------------|
-| 1080p | 10-20 Mbps |
-| 4K SDR | 25-40 Mbps |
-| 4K HDR | 40-80 Mbps |
-| 4K Remux | 80-120+ Mbps |
-
-Test your speed at [{{ speedtest_url | default("fast.com") }}](https://{{ speedtest_url | default("fast.com") }}). If your speed is below the requirement, Plex will transcode the video automatically — and for 4K, that means worse quality than 1080p.
-
-!!! tip "Use Ethernet for 4K"
-    WiFi is unreliable for 4K streaming. A wired ethernet connection to your streaming device is the single best improvement you can make.
-
-### Quick Reference
-
-| Do This | Not This |
-|---------|----------|
-| Use the native Plex app | Watch in a web browser |
-| Set quality to **Original/Maximum** | Leave it on "auto" or a lower setting |
-| Use ethernet for 4K | Rely on WiFi for large files |
-| Watch 1080p if 4K transcodes | Force 4K on a device that can't handle it |
-
-{% endif %}
----
-
 ## More Help
 
+<!-- markdownlint-disable MD055 MD056 -->
 | Resource | Link |
 |----------|------|
 | **Plex Support Articles** | [support.plex.tv](https://support.plex.tv/articles/) |
@@ -559,6 +462,7 @@ Test your speed at [{{ speedtest_url | default("fast.com") }}](https://{{ speedt
 | **Account Help** | [Account Dashboard](https://support.plex.tv/articles/201862428-plex-accounts/) |
 {% if has_request_system %}| **Report Content Issue** | [{{ request_url }}](https://{{ request_url }}) |
 {% endif %}
+<!-- markdownlint-enable MD055 MD056 -->
 
 ---
 
@@ -607,10 +511,12 @@ If you received a message that you're not authorized to use this account, you ne
 
 This is free and takes 2 minutes. See [Getting Started](#getting-started-one-time-setup) above for full setup instructions.
 
+<!-- markdownlint-disable MD003 -->
 {% if has_migration %}
 ---
 
 ## Switching to a New Account?
+<!-- markdownlint-enable MD003 -->
 
 If you need to move to a new Plex account (new email, etc.), {{ admin_name }} can **migrate your entire watch history** to the new account. All your watched/unwatched status transfers over — no need to start from scratch.
 
