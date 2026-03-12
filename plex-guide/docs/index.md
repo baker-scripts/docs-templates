@@ -15,6 +15,8 @@ tags:
 
 {{ server_tagline | default("Your personal streaming service — movies, TV shows, and more.") }}
 
+[TOC]
+
 ## Quick Links
 
 | Action | Link |
@@ -229,7 +231,7 @@ This is almost always an internet speed issue. Plex needs a stable connection to
 
 - Move closer to your WiFi router
 - Plug your TV into the router with an ethernet cable
-- Test your internet speed at [fast.com](https://fast.com) - you need at least 10 Mbps for HD
+- Test your internet speed at [{{ speedtest_url | default("fast.com") }}](https://{{ speedtest_url | default("fast.com") }}) - you need at least 10 Mbps for HD
 
 For more help: [Plex Playback Quality Guide](https://support.plex.tv/articles/quality-suggestions/)
 
@@ -378,7 +380,7 @@ This usually means the quality got lowered to prevent buffering.
 
 - Moving closer to your WiFi router
 - Plugging your TV into the router with a cable
-- Testing your speed at [fast.com](https://fast.com) - you need 25+ Mbps for 4K
+- Testing your speed at [{{ speedtest_url | default("fast.com") }}](https://{{ speedtest_url | default("fast.com") }}) - you need 25+ Mbps for 4K
 
 For more help: [Plex Quality Settings](https://support.plex.tv/articles/quality-suggestions/)
 
@@ -434,6 +436,9 @@ If your smart TV struggles with Plex, consider a dedicated streaming device. The
 | **[Onn 4K Google TV](https://www.walmart.com/ip/onn-Google-TV-4K-Streaming-Box)** | ~$20 | Budget option - surprisingly capable |
 
 **Recommendation:** If you watch a lot of 4K content or have audio equipment (soundbar/receiver), get the **Nvidia Shield TV Pro**. For most people, the **Fire TV Stick 4K Max** is the sweet spot.
+
+!!! tip "Want the full breakdown?"
+    TRaSH Guides maintains a comprehensive [media player compatibility spreadsheet](https://trash-guides.info/Plex/what-does-my-media-player-support/) covering Dolby Vision profiles, HDR formats, audio codecs, and more across dozens of devices.
 
 ---
 
@@ -509,7 +514,11 @@ Common reasons for transcoding:
 | **Apple TV 4K** | Yes | Yes | Partial |
 | **Fire TV Stick 4K Max** | Yes | Yes | No |
 | **Onn 4K Google TV** | Yes | Yes | No |
-| **Most Smart TVs** | Varies | Varies | No |
+| **LG Smart TV** (webOS) | Yes | HDR10/DV | No |
+| **Samsung Smart TV** (Tizen) | Yes | HDR10+ | No |
+| **Sony Smart TV** (Google TV) | Yes | HDR10/DV | No |
+| **TCL Smart TV** (Roku/Google) | Yes | HDR10/DV | No |
+| **Vizio Smart TV** (SmartCast) | Yes | HDR10/DV | No |
 | **Web Browser** | No | No | No |
 
 ### Bandwidth Requirements
@@ -523,7 +532,7 @@ Common reasons for transcoding:
 | 4K HDR | 40-80 Mbps |
 | 4K Remux | 80-120+ Mbps |
 
-Test your speed at [fast.com](https://fast.com). If your speed is below the requirement, Plex will transcode the video automatically — and for 4K, that means worse quality than 1080p.
+Test your speed at [{{ speedtest_url | default("fast.com") }}](https://{{ speedtest_url | default("fast.com") }}). If your speed is below the requirement, Plex will transcode the video automatically — and for 4K, that means worse quality than 1080p.
 
 !!! tip "Use Ethernet for 4K"
     WiFi is unreliable for 4K streaming. A wired ethernet connection to your streaming device is the single best improvement you can make.
