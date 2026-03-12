@@ -1,0 +1,29 @@
+# markdownlint configuration
+default: true
+
+# Allow long lines (common in tables and URLs)
+MD013: false
+
+# Allow HTML (needed for markdownlint-disable comments and redirects)
+MD033: false
+
+# Allow duplicate headings in different sections
+MD024:
+  siblings_only: true
+
+# Allow non-H1 first line (PR template starts with ## Summary)
+MD041: false
+
+# Allow multiple H1s (Jinja2 {{ }} renders as headings in templates)
+MD025: false
+
+# Jinja2 conditionals break blank-line-around-heading detection
+MD022: false
+
+# Jinja2 {% if %} before --- is misdetected as setext heading
+MD003: false
+
+# Jinja2 templates use {{ }} which confuses table rules
+MD055: false
+MD056: false
+MD060: false

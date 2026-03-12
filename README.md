@@ -21,6 +21,7 @@ cd docs-templates/plex-guide
 ```
 
 The script will:
+
 1. Ask for your server details (name, URLs, features)
 2. Generate a configured `mkdocs.yml` from the sample
 3. Build static HTML or start a live preview
@@ -57,11 +58,13 @@ docker run --rm -v "$(pwd):/docs" squidfunk/mkdocs-material build
 If you already have a MkDocs site and want to add the Plex guide:
 
 1. **Install the macros plugin:**
+
    ```bash
    pip install mkdocs-macros-plugin
    ```
 
 2. **Add the plugin to your `mkdocs.yml`:**
+
    ```yaml
    plugins:
      - macros:
@@ -71,6 +74,7 @@ If you already have a MkDocs site and want to add the Plex guide:
    > `render_by_default: false` prevents the plugin from processing `{{ }}` in your other pages (like Docker commands). Only pages with `render_macros: true` in their frontmatter will use variable substitution.
 
 3. **Add variables to `extra:` in your `mkdocs.yml`:**
+
    ```yaml
    extra:
      server_name: "My Server"
