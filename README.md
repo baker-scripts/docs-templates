@@ -140,6 +140,12 @@ Run `mkdocs build` and upload the `site/` directory to any web server (Nginx, Ap
 
 Run `mkdocs serve` for a local development server with live reload at `http://localhost:8000`.
 
+## Contributors
+
+<a href="https://github.com/baker-scripts/docs-templates/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=baker-scripts/docs-templates" />
+</a>
+
 ## Disclaimer
 
 THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
