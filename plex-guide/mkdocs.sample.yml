@@ -1,0 +1,74 @@
+site_name: My Plex Server Guide
+site_description: User guide for my Plex media server
+site_author: Your Name
+
+docs_dir: docs
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  features:
+    - navigation.sections
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+plugins:
+  - search
+  - macros
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - admonition
+  - tables
+  - attr_list
+
+# =============================================================================
+# CUSTOMIZE YOUR SERVER HERE
+# Edit the values below to match your Plex server setup.
+# =============================================================================
+extra:
+  # --- Required ---
+  server_name: "My Plex Server"          # Your server's display name
+  admin_name: "Admin"                     # Server admin's first name
+  admin_contact: "Message Admin"          # How users should reach you (e.g., "Text John", "DM @admin", "Email admin@example.com")
+  media_url: "app.plex.tv"               # URL where users access Plex (e.g., "plex.example.com")
+
+  # --- Optional features (set to false to hide sections) ---
+  has_request_system: true                # Set to true if you run Overseerr/Jellyseerr
+  request_url: "requests.example.com"     # Overseerr/Jellyseerr URL
+  has_discord: false                      # Set to true if you have a Discord server
+  discord_url: ""                         # Discord invite link
+  has_newsletter: false                   # Set to true if you use Tautulli newsletters
+  newsletter_url: ""                      # Tautulli newsletter URL
+  has_guide_url: false                    # Set to true if you host this guide publicly
+  guide_url: ""                           # Public URL for this guide
+  has_plex_pass: true                     # Whether your server has a Plex Pass
+  has_plex_home: false                    # Whether you use Plex Home for some users
+  has_migration: false                    # Whether you offer watch history migration
+  show_costs: false                       # Whether to show server cost information
+  server_cost: ""                         # Monthly server cost (e.g., "~$50/month")
