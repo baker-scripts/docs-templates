@@ -126,6 +126,8 @@ fi
 
 prompt_bool has_plex_pass "Does your server have a Plex Pass?" "true"
 prompt_bool has_plex_home "Do you use Plex Home for some users?" "false"
+prompt_bool has_direct_play "Show direct play optimization section?" "true"
+prompt_bool has_4k_content "Show 4K streaming section?" "true"
 prompt_bool has_migration "Do you offer watch history migration?" "false"
 
 prompt_bool show_costs "Show server cost information?" "false"
@@ -156,6 +158,8 @@ update_config "has_guide_url" "$has_guide_url" true
 update_config "guide_url" "$guide_url"
 update_config "has_plex_pass" "$has_plex_pass" true
 update_config "has_plex_home" "$has_plex_home" true
+update_config "has_direct_play" "$has_direct_play" true
+update_config "has_4k_content" "$has_4k_content" true
 update_config "has_migration" "$has_migration" true
 update_config "show_costs" "$show_costs" true
 update_config "server_cost" "$server_cost"

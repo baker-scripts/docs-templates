@@ -1,5 +1,9 @@
 # docs-templates
 
+[![Build Plex Guide](https://github.com/baker-scripts/docs-templates/actions/workflows/build.yml/badge.svg)](https://github.com/baker-scripts/docs-templates/actions/workflows/build.yml)
+[![Lint](https://github.com/baker-scripts/docs-templates/actions/workflows/lint.yml/badge.svg)](https://github.com/baker-scripts/docs-templates/actions/workflows/lint.yml)
+[![Live Preview](https://img.shields.io/badge/Live_Preview-GitHub_Pages-blue)](https://baker-scripts.github.io/docs-templates/plex/)
+
 MkDocs documentation templates with variable substitution. Fork, customize, and deploy your own documentation site.
 
 ## Available Templates
@@ -116,6 +120,8 @@ Set to `true` to show the section, `false` to hide it.
 | `guide_url` | `""` | Public URL for the guide |
 | `has_plex_pass` | `true` | Plex Pass features section |
 | `has_plex_home` | `false` | Plex Home notes |
+| `has_direct_play` | `true` | Direct play optimization guide |
+| `has_4k_content` | `true` | 4K streaming section |
 | `has_migration` | `false` | Watch history migration section |
 | `show_costs` | `false` | Server cost information |
 | `server_cost` | `""` | Monthly cost string |
@@ -125,6 +131,21 @@ Set to `true` to show the section, `false` to hide it.
 Templates use [mkdocs-macros-plugin](https://mkdocs-macros-plugin.readthedocs.io/) for Jinja2 variable substitution. Variables defined in the `extra:` section of `mkdocs.yml` are available as `{{ variable_name }}` in markdown files.
 
 Conditional sections use `{% if feature_flag %}...{% endif %}` to show/hide content based on your configuration.
+
+## Theme Features
+
+The template uses [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) with a dark-first theme (slate) and light mode toggle. The following features are enabled:
+
+| Feature | Description |
+|---------|-------------|
+| `navigation.sections` | Groups top-level sections in the sidebar with visible headers |
+| `navigation.instant` | Loads pages via XHR without full page reload for faster navigation |
+| `toc.follow` | Automatically scrolls the table of contents sidebar to highlight the active heading |
+| `search.suggest` | Shows search term suggestions as you type in the search bar |
+| `search.highlight` | Highlights matching search terms on the page after navigating from search results |
+| `content.code.copy` | Adds a copy-to-clipboard button on all code blocks |
+| `content.code.annotate` | Enables numbered annotations inside code blocks with expandable tooltips |
+| `content.tabs.link` | Syncs tab selection across all tabbed content blocks on the page |
 
 ## Deployment
 
