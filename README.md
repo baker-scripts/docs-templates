@@ -125,6 +125,33 @@ Set to `true` to show the section, `false` to hide it.
 | `has_migration` | `false` | Watch history migration section |
 | `show_costs` | `false` | Server cost information |
 | `server_cost` | `""` | Monthly cost string |
+| `speedtest_url` | `""` | Speed test URL (falls back to `fast.com`) |
+
+### Contact Card
+
+The `contact_methods` variable configures a bot-protected contact card at the bottom of the guide. Values are base64-encoded at build time and decoded by JavaScript at runtime.
+
+```yaml
+contact_methods:
+  - type: signal_url
+    label: "Message on Signal"
+    value: "https://signal.me/#eu/..."
+    preferred: true    # Shows a "preferred" badge
+  - type: email
+    label: "Email"
+    value: "admin@example.com"
+```
+
+| Type | Behavior | Value Format |
+|------|----------|--------------|
+| `email` | `mailto:` link | `admin@example.com` |
+| `phone` | `tel:` link | `+15551234567` |
+| `signal_url` | Clickable Signal invite | `https://signal.me/#eu/...` |
+| `signal_username` | Plain text (no link) | `username.123` |
+| `telegram` | `t.me/` link | `username` |
+| `discord` | Plain text (no link) | `username` |
+| `whatsapp` | `wa.me/` link | `+15551234567` |
+| `imessage` | `sms:` link | `+15551234567` |
 
 ## How It Works
 

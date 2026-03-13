@@ -6,9 +6,10 @@ MkDocs documentation templates with `mkdocs-macros-plugin` for Jinja2 variable s
 
 - `plex-guide/` — Plex server user guide template
   - `docs/index.md` — templatized guide with `{{ variable }}` references
+  - `main.py` — mkdocs-macros hook: `contact_card()` macro + frontmatter resolution
   - `mkdocs.sample.yml` — sample config (users copy to `mkdocs.yml`, which is gitignored)
   - `setup.sh` — interactive setup script
-  - `requirements.txt` — minimal pip dependencies
+  - `requirements.txt` — minimal pip dependencies (mkdocs pinned to v1)
 - `plans/`, `runbooks/` — future template directories
 
 ## Key Patterns
@@ -34,10 +35,23 @@ MkDocs documentation templates with `mkdocs-macros-plugin` for Jinja2 variable s
 - CI runs markdownlint, shellcheck, yamllint on all PRs
 - GitHub Pages deploys from GHA workflow (plex guide at `/plex/` subpath)
 
+## Contact Card System
+
+`main.py` provides a `contact_card()` macro with bot-protected contact info:
+
+- Values are base64-encoded at build time, decoded by JS at runtime
+- Inline CSS styles the card (border, rounded corners, dividers, preferred badge)
+- Supported types: `email`, `phone`, `signal_url`, `signal_username`, `telegram`, `discord`, `whatsapp`, `imessage`
+- `signal_username` and `discord` render as plain text (no clickable link)
+- `telegram` → `t.me/`, `whatsapp` → `wa.me/`, `imessage` → `sms:`, `phone` → `tel:`
+- `noscript` fallback shows values without JS decoding
+
 ## Rules
 
 - This is a **public repo** — no local paths, infrastructure refs, or personal config
 - All scripts must pass `shellcheck` with no warnings
 - All markdown must pass `markdownlint-cli2` with the repo's `.markdownlint.yaml`
 - New variables must be added to: `mkdocs.sample.yml`, `setup.sh`, `README.md` variable reference
+- New contact types must be added to: `main.py` (JS decoder + `_build_href` + `_display_value`), `mkdocs.sample.yml`
 - Conditional sections must toggle cleanly (no empty sections or broken refs when disabled)
+- MkDocs pinned to v1 (`>=1.6,<2`) — v2 removes plugin system with no migration path
