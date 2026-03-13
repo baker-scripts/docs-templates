@@ -146,19 +146,22 @@ If the sound is off, subtitles are missing, or video looks bad:
 
 The server has a [Plex Pass](https://www.plex.tv/plex-pass/) subscription. **You don't need to buy Plex Pass yourself** to watch content.
 
+Because this server has Plex Pass, you can stream remotely on any device — TV, phone, tablet, or computer — at no cost.
+
 The server's Plex Pass automatically benefits **all users**:
 
 - **Hardware-accelerated streaming** - Videos start faster and play more smoothly
 - **HDR tone mapping** - HDR content looks correct even on non-HDR screens
+- **Remote streaming** - Watch from anywhere on any device
 
 {% if has_plex_home %}
 !!! note "Plex Home Members"
     A few users are part of the **Plex Home** and automatically get Skip Intro/Credits, Lyrics, and Trailers. If you're not sure whether you're in Plex Home, you probably aren't — ask {{ admin_name }}.
 {% endif %}
 
-### Get Your Own Plex Pass (Recommended)
+### Get Your Own Plex Pass (Optional)
 
-A personal [Plex Pass](https://www.plex.tv/plex-pass/) ($5/month, $40/year, or $120 lifetime) gives you features the server can't provide:
+A personal [Plex Pass](https://www.plex.tv/plex-pass/) ($6.99/month, $69.99/year, or $249.99 lifetime) gives you features the server can't provide:
 
 <!-- markdownlint-disable MD055 MD056 -->
 | Feature | Description |
@@ -172,13 +175,39 @@ A personal [Plex Pass](https://www.plex.tv/plex-pass/) ($5/month, $40/year, or $
 | **Plexamp Premium** | Enhanced music player features |
 <!-- markdownlint-enable MD055 MD056 -->
 
+Compare all options at [plex.tv/plans](https://www.plex.tv/plans/).
+
 !!! tip "Is Plex Pass Worth It?"
-    **Most users: yes.** The $120 lifetime pass pays for itself quickly. You get Skip Intro/Credits on every show, offline downloads for travel, and free mobile apps. The $40/year option is good if you want to try it first.
+    **Most users: yes.** The $249.99 lifetime pass pays for itself quickly. You get Skip Intro/Credits on every show, offline downloads for travel, and free mobile apps. The $69.99/year option is good if you want to try it first.
 
 !!! note "Phone/Tablet App Without Plex Pass"
     The Plex mobile app has a one-time $5 unlock fee. To avoid this:
 
     - Watch on your **TV** instead (free)
+    - Use [{{ media_url }}](https://{{ media_url }}) in your phone's browser (free)
+
+{% else %}
+
+### Remote Streaming — What You Need
+
+Since late 2025, Plex requires a paid plan to stream remotely on TV and mobile apps. **Streaming via a computer browser is still free.**
+
+<!-- markdownlint-disable MD055 MD056 -->
+| Plan | Price | What You Get |
+|------|-------|-------------|
+| **Remote Watch Pass** | $2.99/month or $29.99/year | Remote streaming on TV and mobile apps |
+| **Plex Pass** | $6.99/month, $69.99/year, or $249.99 lifetime | Remote streaming + Skip Intro/Credits, Downloads, Lyrics, Free Mobile App, and more |
+<!-- markdownlint-enable MD055 MD056 -->
+
+Compare all options at [plex.tv/plans](https://www.plex.tv/plans/).
+
+!!! tip "Which Plan Should I Get?"
+    If you only watch on your **computer browser**, you don't need either plan. If you watch on a **TV, phone, or tablet**, the **Remote Watch Pass** ($2.99/month) is the minimum. **Plex Pass** adds Skip Intro/Credits, offline downloads, and other features — the $249.99 lifetime option pays for itself quickly.
+
+!!! note "Phone/Tablet App Without Plex Pass"
+    The Plex mobile app has a one-time $5 unlock fee. To avoid this:
+
+    - Watch on your **TV** instead (free with Remote Watch Pass)
     - Use [{{ media_url }}](https://{{ media_url }}) in your phone's browser (free)
 {% endif %}
 
@@ -401,12 +430,12 @@ This means the server might be down. **{{ admin_contact }}** - this is something
 
 Before contacting them, try:
 
-1. Check the [server status page](https://{{ media_url }}/identity) - if it loads, the server is running
+1. Try opening [{{ media_url }}](https://{{ media_url }}) — if it loads, the server is running
 2. Check if [plex.tv](https://www.plex.tv) loads (if it doesn't, Plex itself is having issues)
 3. Restart your WiFi router
 4. Try from your phone using cellular data (not WiFi)
 
-If the status page works but Plex doesn't load, try signing out and back in. If the status page is also down, the server is offline - {{ admin_contact | lower }}.
+If the page loads but nothing plays, try signing out and back in. If it won't load at all, the server is offline — {{ admin_contact | lower }}.
 
 ---
 
@@ -466,9 +495,9 @@ Not all devices support every video/audio format. If your device can't play a fi
 | **Playback Issues** | [Troubleshooting Guide](https://support.plex.tv/articles/200430313-troubleshooting/) |
 | **Quality Settings** | [Quality Suggestions](https://support.plex.tv/articles/quality-suggestions/) |
 | **Account Help** | [Account Dashboard](https://support.plex.tv/articles/201862428-plex-accounts/) |
-{% if has_plex_pass %}| **Get Plex Pass** | [plex.tv/plex-pass](https://www.plex.tv/plex-pass/) |
-{% endif %}{% if has_request_system %}| **Report Content Issue** | [{{ request_url }}](https://{{ request_url }}) |
-{% endif %}| **Server Status** | [{{ media_url }}/identity](https://{{ media_url }}/identity) |
+| **Plex Plans** | [plex.tv/plans](https://www.plex.tv/plans/) |
+{% if has_request_system %}| **Report Content Issue** | [{{ request_url }}](https://{{ request_url }}) |
+{% endif %}
 <!-- markdownlint-enable MD055 MD056 -->
 
 ---
@@ -538,11 +567,10 @@ If you need to move to a new Plex account (new email, etc.), {{ admin_name }} ca
 
 **Only contact {{ admin_name }} for these things:**
 
-- [{{ media_url }}](https://{{ media_url }}) won't load at all (server may be down)
+- [{{ media_url }}](https://{{ media_url }}){% if has_request_system %} or [{{ request_url }}](https://{{ request_url }}){% endif %} won't load at all (the server or its services are down — not a plex.tv issue)
 - You need to be added (send your email address)
 {% if has_migration %}- You're switching to a new account ({{ admin_name }} can migrate your watch history)
-{% endif %}{% if has_request_system %}- A movie/show has the wrong audio, bad quality, or missing subtitles (use [Report Issue](https://{{ request_url }}) first)
-{% else %}- A movie/show has the wrong audio, bad quality, or missing subtitles
+{% endif %}{% if not has_request_system %}- A movie/show has the wrong audio, bad quality, or missing subtitles
 {% endif %}- You're seeing payment prompts when you shouldn't be
 
 {{ contact_card() }}
