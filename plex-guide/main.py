@@ -170,7 +170,7 @@ def define_env(env):
         href = decoded;
         display = label;
       }}
-      if (!/^(mailto:|tel:|sms:|https?:\/\/)/.test(href)) {{
+      if (!/^(mailto:|tel:|sms:|https?:\\/\\/)/.test(href)) {{
         elem.innerHTML = '<strong>' + esc(label) + '</strong>' + badge + ': ' + esc(display);
         return;
       }}
