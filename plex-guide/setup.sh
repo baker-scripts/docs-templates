@@ -136,12 +136,18 @@ if [[ "$show_costs" == "true" ]]; then
   prompt server_cost "Monthly server cost" "~\$50/month"
 fi
 
+prompt speedtest_url "Speed test URL (leave blank for fast.com)" ""
+
 # Update config
 printf "\n%bUpdating %s...%b\n" "$YELLOW" "$CONFIG_FILE" "$NC"
 
 # Update site_name and site_author
 sed -i "s|^site_name:.*|site_name: ${server_name} Guide|" "$CONFIG_FILE"
 sed -i "s|^site_author:.*|site_author: ${admin_name}|" "$CONFIG_FILE"
+
+# Update frontmatter title and description in docs/index.md
+sed -i "s|^title:.*|title: \"${server_name} Streaming\"|" docs/index.md
+sed -i "s|^description:.*|description: \"Watch movies and TV shows on ${server_name}\"|" docs/index.md
 
 # Update extra: variables
 update_config "server_name" "$server_name"
@@ -163,6 +169,7 @@ update_config "has_4k_content" "$has_4k_content" true
 update_config "has_migration" "$has_migration" true
 update_config "show_costs" "$show_costs" true
 update_config "server_cost" "$server_cost"
+update_config "speedtest_url" "$speedtest_url"
 
 printf "%bConfiguration updated.%b\n\n" "$GREEN" "$NC"
 

@@ -76,3 +76,4 @@ extra:
   has_migration: false                    # Whether you offer watch history migration
   show_costs: false                       # Whether to show server cost information
   server_cost: ""                         # Monthly server cost (e.g., "~$50/month")
+  speedtest_url: ""                        # Speed test URL (e.g., "speedtest.example.com"). Falls back to fast.com if empty

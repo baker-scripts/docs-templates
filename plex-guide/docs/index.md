@@ -143,12 +143,12 @@ If the sound is off, subtitles are missing, or video looks bad:
 
 ### Plex Pass - What You Get
 
-The server has a Plex Pass subscription. **You don't need to buy Plex Pass yourself** to watch content.
+The server has a [Plex Pass](https://www.plex.tv/plex-pass/) subscription. **You don't need to buy Plex Pass yourself** to watch content.
 
-The server's Plex Pass enables for **all users**:
+The server's Plex Pass automatically benefits **all users**:
 
-- **Remote streaming** - Watch from anywhere, not just on the same network
-- **Hardware transcoding** - Faster video startup and smoother playback
+- **Hardware-accelerated streaming** - Videos start faster and play more smoothly
+- **HDR tone mapping** - HDR content looks correct even on non-HDR screens
 
 {% if has_plex_home %}
 !!! note "Plex Home Members"
@@ -157,7 +157,7 @@ The server's Plex Pass enables for **all users**:
 
 ### Get Your Own Plex Pass (Recommended)
 
-A personal Plex Pass ($5/month, $40/year, or $120 lifetime) gives you features the server can't provide:
+A personal [Plex Pass](https://www.plex.tv/plex-pass/) ($5/month, $40/year, or $120 lifetime) gives you features the server can't provide:
 
 <!-- markdownlint-disable MD055 MD056 -->
 | Feature | Description |
@@ -271,7 +271,7 @@ For more help: [Plex Playback Quality Guide](https://support.plex.tv/articles/qu
     3. Tap **"Sign Out"**
     4. Sign back in
 
-=== "On Computer"
+=== "On Your Computer"
 
     1. Go to [app.plex.tv](https://app.plex.tv)
     2. Click your profile picture (top-right)
@@ -400,11 +400,12 @@ This means the server might be down. **{{ admin_contact }}** - this is something
 
 Before contacting them, try:
 
-1. Check if [plex.tv](https://www.plex.tv) loads (if it doesn't, Plex itself is having issues)
-2. Restart your WiFi router
-3. Try from your phone using cellular data (not WiFi)
+1. Check the [server status page](https://{{ media_url }}/identity) - if it loads, the server is running
+2. Check if [plex.tv](https://www.plex.tv) loads (if it doesn't, Plex itself is having issues)
+3. Restart your WiFi router
+4. Try from your phone using cellular data (not WiFi)
 
-If plex.tv works but {{ server_name }} doesn't, the server is likely down - {{ admin_contact | lower }}.
+If the status page works but Plex doesn't load, try signing out and back in. If the status page is also down, the server is offline - {{ admin_contact | lower }}.
 
 ---
 
@@ -464,8 +465,9 @@ Not all devices support every video/audio format. If your device can't play a fi
 | **Playback Issues** | [Troubleshooting Guide](https://support.plex.tv/articles/200430313-troubleshooting/) |
 | **Quality Settings** | [Quality Suggestions](https://support.plex.tv/articles/quality-suggestions/) |
 | **Account Help** | [Account Dashboard](https://support.plex.tv/articles/201862428-plex-accounts/) |
-{% if has_request_system %}| **Report Content Issue** | [{{ request_url }}](https://{{ request_url }}) |
-{% endif %}
+{% if has_plex_pass %}| **Get Plex Pass** | [plex.tv/plex-pass](https://www.plex.tv/plex-pass/) |
+{% endif %}{% if has_request_system %}| **Report Content Issue** | [{{ request_url }}](https://{{ request_url }}) |
+{% endif %}| **Server Status** | [{{ media_url }}/identity](https://{{ media_url }}/identity) |
 <!-- markdownlint-enable MD055 MD056 -->
 
 ---
