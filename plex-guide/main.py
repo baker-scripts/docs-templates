@@ -81,6 +81,34 @@ def define_env(env):
         decoders = "\n".join(js_decoders)
 
         html = f"""\
+<style>
+.contact-card {{
+  border: 1px solid var(--md-default-fg-color--lighter, #e0e0e0);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  background: var(--md-code-bg-color, #f5f5f5);
+}}
+.contact-card ul {{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}}
+.contact-card li {{
+  padding: 0.4rem 0;
+}}
+.contact-card li + li {{
+  border-top: 1px solid var(--md-default-fg-color--lightest, #eee);
+}}
+.preferred-badge {{
+  font-size: 0.75em;
+  background: var(--md-accent-fg-color, #448aff);
+  color: white;
+  padding: 0.15em 0.5em;
+  border-radius: 4px;
+  vertical-align: middle;
+}}
+</style>
 <div class="contact-card">
 <ul>
 {items}
@@ -104,6 +132,9 @@ def define_env(env):
       }} else if (type === 'signal_url') {{
         href = decoded;
         display = label;
+      }} else if (type === 'signal_username') {{
+        elem.innerHTML = '<strong>' + label + '</strong>' + badge + ': ' + decoded;
+        return;
       }} else {{
         href = decoded;
         display = label;
@@ -128,12 +159,14 @@ def _build_href(method_type, value):
     if method_type == "phone":
         digits = re.sub(r"[^\d+]", "", value)
         return f"tel:{digits}"
+    if method_type == "signal_username":
+        return value
     return value
 
 
 def _display_value(method_type, value):
     """Build a display string for noscript fallback."""
-    if method_type in ("email", "phone"):
+    if method_type in ("email", "phone", "signal_username"):
         return value
     if method_type == "signal_url":
         return "Signal"
