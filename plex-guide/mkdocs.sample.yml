@@ -77,3 +77,18 @@ extra:
   show_costs: false                       # Whether to show server cost information
   server_cost: ""                         # Monthly server cost (e.g., "~$50/month")
   speedtest_url: ""                        # Speed test URL (e.g., "speedtest.example.com"). Falls back to fast.com if empty
+
+  # --- Contact card (bot-protected, decoded via JavaScript) ---
+  # Each method: type (email|phone|signal_url), label, value, preferred (optional)
+  contact_methods: []
+  # contact_methods:
+  #   - type: signal_url
+  #     label: "Message on Signal"
+  #     value: "https://signal.me/#eu/..."
+  #     preferred: true
+  #   - type: phone
+  #     label: "Text"
+  #     value: "+15551234567"
+  #   - type: email
+  #     label: "Email"
+  #     value: "admin@example.com"

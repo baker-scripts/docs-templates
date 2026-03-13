@@ -1,6 +1,7 @@
 ---
 title: "{{ server_name }} Streaming"
 description: "Watch movies and TV shows on {{ server_name }}"
+render_macros: true
 tags:
   - plex
   - media
@@ -543,3 +544,5 @@ If you need to move to a new Plex account (new email, etc.), {{ admin_name }} ca
 {% endif %}{% if has_request_system %}- A movie/show has the wrong audio, bad quality, or missing subtitles (use [Report Issue](https://{{ request_url }}) first)
 {% else %}- A movie/show has the wrong audio, bad quality, or missing subtitles
 {% endif %}- You're seeing payment prompts when you shouldn't be
+
+{{ contact_card() }}
