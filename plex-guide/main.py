@@ -132,9 +132,18 @@ def define_env(env):
       }} else if (type === 'signal_url') {{
         href = decoded;
         display = label;
-      }} else if (type === 'signal_username') {{
+      }} else if (type === 'signal_username' || type === 'discord') {{
         elem.innerHTML = '<strong>' + label + '</strong>' + badge + ': ' + decoded;
         return;
+      }} else if (type === 'telegram') {{
+        href = 'https://t.me/' + decoded;
+        display = decoded;
+      }} else if (type === 'whatsapp') {{
+        href = 'https://wa.me/' + decoded.replace(/[^+\\d]/g, '');
+        display = decoded;
+      }} else if (type === 'imessage') {{
+        href = 'sms:' + decoded.replace(/[^+\\d]/g, '');
+        display = decoded;
       }} else {{
         href = decoded;
         display = label;
@@ -156,17 +165,31 @@ def _build_href(method_type, value):
     """Build the appropriate href for a contact method type."""
     if method_type == "email":
         return f"mailto:{value}"
-    if method_type == "phone":
+    if method_type in ("phone", "imessage"):
         digits = re.sub(r"[^\d+]", "", value)
-        return f"tel:{digits}"
-    if method_type == "signal_username":
+        prefix = "sms:" if method_type == "imessage" else "tel:"
+        return f"{prefix}{digits}"
+    if method_type == "telegram":
+        return f"https://t.me/{value}"
+    if method_type == "whatsapp":
+        digits = re.sub(r"[^\d+]", "", value)
+        return f"https://wa.me/{digits}"
+    if method_type in ("signal_username", "discord"):
         return value
     return value
 
 
 def _display_value(method_type, value):
     """Build a display string for noscript fallback."""
-    if method_type in ("email", "phone", "signal_username"):
+    if method_type in (
+        "email",
+        "phone",
+        "signal_username",
+        "discord",
+        "telegram",
+        "whatsapp",
+        "imessage",
+    ):
         return value
     if method_type == "signal_url":
         return "Signal"

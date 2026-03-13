@@ -79,7 +79,16 @@ extra:
   speedtest_url: ""                        # Speed test URL (e.g., "speedtest.example.com"). Falls back to fast.com if empty
 
   # --- Contact card (bot-protected, decoded via JavaScript) ---
-  # Each method: type (email|phone|signal_url|signal_username), label, value, preferred (optional)
+  # Each method: type, label, value, preferred (optional)
+  # Types: email, phone, signal_url, signal_username, telegram, discord, whatsapp, imessage
+  #   email          → mailto: link
+  #   phone          → tel: link (strips non-digits)
+  #   signal_url     → clickable Signal invite link
+  #   signal_username→ plain text (user searches in Signal)
+  #   telegram       → t.me/username link
+  #   discord        → plain text (user searches in Discord)
+  #   whatsapp       → wa.me/number link (strips non-digits)
+  #   imessage       → sms: link (strips non-digits)
   contact_methods: []
   # contact_methods:
   #   - type: signal_url
@@ -89,6 +98,18 @@ extra:
   #   - type: signal_username
   #     label: "Signal Username"
   #     value: "username.123"
+  #   - type: telegram
+  #     label: "Telegram"
+  #     value: "username"
+  #   - type: discord
+  #     label: "Discord"
+  #     value: "username#1234"
+  #   - type: whatsapp
+  #     label: "WhatsApp"
+  #     value: "+15551234567"
+  #   - type: imessage
+  #     label: "iMessage"
+  #     value: "+15551234567"
   #   - type: phone
   #     label: "Text"
   #     value: "+15551234567"
