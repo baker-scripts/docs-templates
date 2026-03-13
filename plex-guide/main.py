@@ -6,9 +6,17 @@ Provides:
 """
 
 import base64
+import html as html_mod
+import json
 import re
 
 from markupsafe import Markup
+
+# Contact types that display as plain text (no clickable link)
+_NO_LINK_TYPES = frozenset({"signal_username", "discord"})
+
+# Allowed URL scheme prefixes for href attributes
+_ALLOWED_SCHEMES = ("mailto:", "tel:", "sms:", "https://", "http://")
 
 
 def define_env(env):
@@ -49,6 +57,7 @@ def define_env(env):
 
             encoded = base64.b64encode(value.encode()).decode("ascii")
             elem_id = f"contact-{i}"
+            safe_label = html_mod.escape(label)
             badge = (
                 ' <span class="preferred-badge">preferred</span>' if preferred else ""
             )
@@ -56,22 +65,30 @@ def define_env(env):
             href = _build_href(method_type, value)
             display_value = _display_value(method_type, value)
 
-            # noscript fallback with plain value
-            noscript_link = (
-                f'<a href="{href}" rel="nofollow noopener noreferrer">{display_value}</a>'
-                if href != value
-                else f"<span>{display_value}</span>"
-            )
+            # noscript fallback — use type-based check, not href equality
+            if method_type in _NO_LINK_TYPES:
+                noscript_content = f"<span>{html_mod.escape(display_value)}</span>"
+            elif href:
+                noscript_content = (
+                    f'<a href="{html_mod.escape(href, quote=True)}"'
+                    f' rel="nofollow noopener noreferrer">'
+                    f"{html_mod.escape(display_value)}</a>"
+                )
+            else:
+                noscript_content = f"<span>{html_mod.escape(display_value)}</span>"
 
             items_html.append(
                 f'<li id="{elem_id}">'
-                f"<strong>{label}</strong>{badge}: "
-                f"<noscript>{noscript_link}</noscript>"
+                f"<strong>{safe_label}</strong>{badge}: "
+                f"<noscript>{noscript_content}</noscript>"
                 f"</li>"
             )
 
+            # Use json.dumps for safe JS string interpolation
             js_decoders.append(
-                f'  decode("{elem_id}", "{encoded}", "{label}", "{method_type}", {str(preferred).lower()});'
+                f"  decode({json.dumps(elem_id)}, {json.dumps(encoded)},"
+                f" {json.dumps(label)}, {json.dumps(method_type)},"
+                f" {str(preferred).lower()});"
             )
 
         if not items_html:
@@ -80,7 +97,7 @@ def define_env(env):
         items = "\n".join(items_html)
         decoders = "\n".join(js_decoders)
 
-        html = f"""\
+        html_out = f"""\
 <style>
 .contact-card {{
   border: 1px solid var(--md-default-fg-color--lighter, #e0e0e0);
@@ -116,6 +133,11 @@ def define_env(env):
 </div>
 <script>
 (function() {{
+  function esc(s) {{
+    var d = document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }}
   function decode(id, encoded, label, type, preferred) {{
     var elem = document.getElementById(id);
     if (!elem) return;
@@ -133,10 +155,10 @@ def define_env(env):
         href = decoded;
         display = label;
       }} else if (type === 'signal_username' || type === 'discord') {{
-        elem.innerHTML = '<strong>' + label + '</strong>' + badge + ': ' + decoded;
+        elem.innerHTML = '<strong>' + esc(label) + '</strong>' + badge + ': ' + esc(decoded);
         return;
       }} else if (type === 'telegram') {{
-        href = 'https://t.me/' + decoded;
+        href = 'https://t.me/' + encodeURIComponent(decoded);
         display = decoded;
       }} else if (type === 'whatsapp') {{
         href = 'https://wa.me/' + decoded.replace(/[^+\\d]/g, '');
@@ -148,8 +170,12 @@ def define_env(env):
         href = decoded;
         display = label;
       }}
-      elem.innerHTML = '<strong>' + label + '</strong>' + badge + ': '
-        + '<a href="' + href + '" rel="nofollow noopener noreferrer">' + display + '</a>';
+      if (!/^(mailto:|tel:|sms:|https?:\/\/)/.test(href)) {{
+        elem.innerHTML = '<strong>' + esc(label) + '</strong>' + badge + ': ' + esc(display);
+        return;
+      }}
+      elem.innerHTML = '<strong>' + esc(label) + '</strong>' + badge + ': '
+        + '<a href="' + esc(href) + '" rel="nofollow noopener noreferrer">' + esc(display) + '</a>';
     }} catch (e) {{
       // Decoding failed — noscript fallback remains
     }}
@@ -158,7 +184,7 @@ def define_env(env):
 }})();
 </script>"""
 
-        return Markup(html)
+        return Markup(html_out)
 
 
 def _build_href(method_type, value):
@@ -174,8 +200,15 @@ def _build_href(method_type, value):
     if method_type == "whatsapp":
         digits = re.sub(r"[^\d+]", "", value)
         return f"https://wa.me/{digits}"
-    if method_type in ("signal_username", "discord"):
+    if method_type == "signal_url":
+        if not any(value.startswith(s) for s in ("https://", "http://")):
+            return ""
         return value
+    if method_type in _NO_LINK_TYPES:
+        return ""
+    # Generic link — validate scheme
+    if not any(value.startswith(s) for s in ("https://", "http://")):
+        return ""
     return value
 
 

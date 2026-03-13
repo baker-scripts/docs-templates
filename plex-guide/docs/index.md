@@ -267,7 +267,7 @@ This is almost always an internet speed issue. Plex needs a stable connection to
 
 - Move closer to your WiFi router
 - Plug your TV into the router with an ethernet cable
-- Test your internet speed at [{{ speedtest_url | default("fast.com") }}](https://{{ speedtest_url | default("fast.com") }}) - you need at least 10 Mbps for HD
+- Test your internet speed at [{{ speedtest_url | default("fast.com", true) }}](https://{{ speedtest_url | default("fast.com", true) }}) - you need at least 10 Mbps for HD
 
 For more help: [Plex Playback Quality Guide](https://support.plex.tv/articles/quality-suggestions/)
 
@@ -408,7 +408,7 @@ For more help: [Plex Password Reset Guide](https://support.plex.tv/articles/acco
 
     - Moving closer to your WiFi router
     - Plugging your TV into the router with a cable
-    - Testing your speed at [{{ speedtest_url | default("fast.com") }}](https://{{ speedtest_url | default("fast.com") }}) - you need 25+ Mbps for 4K
+    - Testing your speed at [{{ speedtest_url | default("fast.com", true) }}](https://{{ speedtest_url | default("fast.com", true) }}) - you need 25+ Mbps for 4K
 
     For more help: [Plex Quality Settings](https://support.plex.tv/articles/quality-suggestions/)
 
@@ -547,8 +547,8 @@ If you received a message that you're not authorized to use this account, you ne
 
 This is free and takes 2 minutes. See [Getting Started](#getting-started-one-time-setup) above for full setup instructions.
 
-<!-- markdownlint-disable MD003 -->
 {% if has_migration %}
+<!-- markdownlint-disable MD003 -->
 ---
 
 ## Switching to a New Account?
