@@ -138,6 +138,21 @@ fi
 
 prompt speedtest_url "Speed test URL (leave blank for fast.com)" ""
 
+# Stream monitoring
+printf "\n%b=== Stream Monitoring ===%b\n\n" "$YELLOW" "$NC"
+
+prompt_bool has_stream_monitoring "Do you use stream monitoring (Tracearr/Tautulli kill rules)?" "false"
+has_geo_restriction="false"
+has_transcode_protection="false"
+has_stream_limits="false"
+has_impossible_travel="false"
+if [[ "$has_stream_monitoring" == "true" ]]; then
+  prompt_bool has_geo_restriction "Geo-based stream kills (VPN / out-of-country)?" "false"
+  prompt_bool has_transcode_protection "4K transcode protection kills?" "false"
+  prompt_bool has_stream_limits "Per-user stream limit kills?" "false"
+  prompt_bool has_impossible_travel "Impossible-travel detection kills?" "false"
+fi
+
 # Update config
 printf "\n%bUpdating %s...%b\n" "$YELLOW" "$CONFIG_FILE" "$NC"
 
@@ -170,6 +185,11 @@ update_config "has_migration" "$has_migration" true
 update_config "show_costs" "$show_costs" true
 update_config "server_cost" "$server_cost"
 update_config "speedtest_url" "$speedtest_url"
+update_config "has_stream_monitoring" "$has_stream_monitoring" true
+update_config "has_geo_restriction" "$has_geo_restriction" true
+update_config "has_transcode_protection" "$has_transcode_protection" true
+update_config "has_stream_limits" "$has_stream_limits" true
+update_config "has_impossible_travel" "$has_impossible_travel" true
 
 printf "%bConfiguration updated.%b\n\n" "$GREEN" "$NC"
 

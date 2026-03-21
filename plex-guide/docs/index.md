@@ -34,7 +34,55 @@ tags:
 
 ## Having Issues?
 
-??? warning "Click here if something isn't working"
+{% if has_stream_monitoring %}
+If your stream was stopped or you're having trouble, find your situation below.
+
+!!! failure "Your Stream Was Stopped"
+
+    If you received a message that your stream was terminated, here's why and what to do:
+{% if has_geo_restriction %}
+
+    **"Streaming is restricted to the United States..."**
+
+    Your connection appears to be outside the permitted region. This is usually caused by a VPN.
+
+    1. **Disable your VPN** and try again — this is the most common fix
+    2. If you're not using a VPN, your ISP may be routing through another country — try a different network (e.g., switch from WiFi to cellular)
+    3. Still blocked? {{ admin_contact }} — they can whitelist your location
+{% endif %}
+{% if has_transcode_protection %}
+
+    **"4K content requires direct play..."**
+
+    Your device can't play this file directly, so the server is converting it — which lowers quality and uses server resources.
+
+    1. In the Plex app, set quality to **Original** or **Maximum** (see [quality settings](#the-picture-looks-bad-or-blurry))
+    2. If that doesn't help, your device may not support 4K — try a different device (see [recommended devices](#recommended-streaming-devices))
+    3. {{ admin_contact }} if you need help
+{% endif %}
+{% if has_stream_limits %}
+
+    **"This account is limited to X streams..."**
+
+    Too many people are watching on this account at the same time.
+
+    1. Ask others sharing the account to stop one of their streams
+    2. If you're not the account holder, [create your own free Plex account](#not-the-account-holder) — it takes 2 minutes
+    3. {{ admin_contact }} if this doesn't seem right
+{% endif %}
+{% if has_impossible_travel %}
+
+    **"Suspicious activity detected..."**
+
+    Your account was used from locations too far apart to be the same person.
+
+    1. If you recently traveled, wait a few minutes and try again
+    2. If someone else has your login, [secure your account](#account-security) immediately
+    3. {{ admin_contact }} if you believe this is an error
+{% endif %}
+
+{% endif %}
+!!! warning "General Troubleshooting"
 
     **Can't find {{ server_name }}?**
 

@@ -78,6 +78,13 @@ extra:
   server_cost: ""                         # Monthly server cost (e.g., "~$50/month")
   speedtest_url: ""                        # Speed test URL (e.g., "speedtest.example.com"). Falls back to fast.com if empty
 
+  # --- Stream monitoring (set to true if you use Tracearr/Tautulli kill rules) ---
+  has_stream_monitoring: false              # Master toggle — shows "Your Stream Was Stopped" section in Having Issues
+  has_geo_restriction: false               # Geo-based stream kills (VPN / out-of-country)
+  has_transcode_protection: false          # 4K transcode protection kills
+  has_stream_limits: false                 # Per-user simultaneous stream limit kills
+  has_impossible_travel: false             # Impossible-travel detection kills
+
   # --- Contact card (bot-protected, decoded via JavaScript) ---
   # Each method: type, label, value, preferred (optional)
   # Types: email, phone, signal_url, signal_username, telegram, discord, whatsapp, imessage
