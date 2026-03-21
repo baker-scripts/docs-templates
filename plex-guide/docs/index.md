@@ -435,6 +435,7 @@ For more help: [Plex Password Reset Guide](https://support.plex.tv/articles/acco
     **If there's no English option:** That movie might only be available in the original language. Contact {{ admin_name }} to report the issue.
     {% endif %}
 
+<a id="the-picture-looks-bad-or-blurry"></a>
 ??? note "The Picture Looks Bad or Blurry"
 
     This usually means the quality got lowered to prevent buffering.
