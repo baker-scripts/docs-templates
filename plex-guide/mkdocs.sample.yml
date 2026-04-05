@@ -85,6 +85,10 @@ extra:
   has_stream_limits: false                 # Per-user simultaneous stream limit kills
   has_impossible_travel: false             # Impossible-travel detection kills
 
+  # --- Device setup guides (set to true to show device-specific setup pages) ---
+  has_fire_tv: true                        # Fire TV Stick setup instructions
+  has_shield: true                         # NVIDIA Shield setup instructions
+
   # --- Contact card (bot-protected, decoded via JavaScript) ---
   # Each method: type, label, value, preferred (optional)
   # Types: email, phone, signal_url, signal_username, telegram, discord, whatsapp, imessage
