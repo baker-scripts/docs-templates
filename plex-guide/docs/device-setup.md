@@ -1,4 +1,5 @@
 ---
+title: Device Setup Guides
 render_macros: true
 ---
 
