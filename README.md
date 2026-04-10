@@ -89,9 +89,31 @@ If you already have a MkDocs site and want to add the Plex guide:
      # ... see Variable Reference below
    ```
 
-4. **Copy `plex-guide/docs/index.md`** into your docs directory.
+4. **Copy the template pages** into your docs directory:
+
+   ```bash
+   cp plex-guide/docs/index.md your-docs/guides/plex/index.md
+   cp plex-guide/docs/device-setup.md your-docs/guides/plex/device-setup.md
+   ```
+
+   If using as a git submodule, add these `cp` commands to your build pipeline (Docker entrypoint, CI workflow, or `make build` target). The template is the source of truth — don't edit the local copies.
 
 5. **Add `render_macros: true`** to the page's frontmatter (already included in the template).
+
+6. **Configure `admin_contact` as a cross-page link** if you use multiple template pages. The `#contact-aj` anchor only exists on `index.md`, so use:
+
+   ```yaml
+   admin_contact: "[Contact Admin](index.md#contact-aj)"
+   ```
+
+   Using a same-page anchor like `[Contact Admin](#contact-aj)` will fail the mkdocs build in strict mode when the macro expands on `device-setup.md`.
+
+7. **Gitignore the local copies** so they're always sourced from the template:
+
+   ```gitignore
+   docs/guides/plex/index.md
+   docs/guides/plex/device-setup.md
+   ```
 
 ## Variable Reference
 
