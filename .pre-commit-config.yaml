@@ -40,5 +40,5 @@ repos:
         name: shfmt
         language: system
         entry: shfmt
-        args: [--diff, --indent, '2', --case-indent, --binary-next-line]
+        args: [--write, --indent, '2', --case-indent, --binary-next-line]
         types: [shell]
