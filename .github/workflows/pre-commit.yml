@@ -1,0 +1,12 @@
+---
+name: Pre-commit
+
+"on":
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  pre-commit:
+    uses: baker-scripts/.github/.github/workflows/pre-commit.yml@main
