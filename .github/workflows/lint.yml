@@ -11,7 +11,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-
+permissions:
+  contents: read
+
+jobs:
   markdownlint:
     name: Markdown
     runs-on: ubuntu-latest
@@ -45,6 +48,3 @@ concurrency:
       - run: pip install yamllint
 
       - run: yamllint -d relaxed .
-
-permissions:
-  contents: read
