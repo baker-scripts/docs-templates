@@ -306,33 +306,108 @@ Setup and usage instructions for streaming devices. For general getting started 
 
 ---
 
-## Smart TV (Samsung / LG)
+## Smart TVs (Samsung / LG / Vizio) — not recommended
 
-### Installing Plex
+!!! danger "Smart TV apps are the worst way to watch {{ server_name }}"
+    Built-in TV Plex apps are the lowest-quality, least-reliable option for streaming. We strongly recommend a dedicated streaming device instead. Reasons:
 
-- **Samsung (Tizen):** Open the **Smart Hub**, navigate to **Apps**, search for **Plex**, and install it.
-- **LG (webOS):** Open the **LG Content Store**, search for **Plex**, and install it.
+    - **Missing features** — Smart TV apps lag the official Plex roadmap by years. Dolby Vision, lossless audio passthrough, and high-quality subtitle rendering are missing or broken on most models.
+    - **Forced transcoding** — Most TV apps cannot direct-play higher-bitrate or non-standard codecs. The server transcodes on the fly, which spikes server CPU and degrades picture quality (banding, softness, lost HDR metadata).
+    - **Broken audio passthrough** — DTS-HD MA and TrueHD are typically downmixed to PCM, and Atmos is lost entirely. You will not get the soundtrack the file actually contains.
+    - **Poor app stability** — Frequent freezes, slow library loads, and Plex apps that get abandoned by the TV manufacturer 1–2 years after the model ships.
 
-Most 2017 and newer Samsung and LG TVs support the Plex app directly from their built-in app stores.
+    **Use one of these instead** (already documented above): [Apple TV](#apple-tv) (best — direct plays nearly everything, full Atmos, Dolby Vision), [NVIDIA Shield](#nvidia-shield), or [Fire TV Stick](#fire-tv-stick).
 
-### Signing In
+If you must use the TV's built-in app, instructions for each platform follow.
+
+### Samsung TV (Tizen)
+
+!!! warning "Tizen apps are short-lived"
+    Samsung typically drops Plex app support 1–2 years after a TV model ships. If your TV is more than 2 years old, expect the Plex app to either be missing from the store or stuck on an old version that no longer connects to current servers.
+
+#### Installing Plex
+
+1. Open the **Smart Hub** and navigate to **Apps**
+2. Search for **Plex** and install it
+
+Most 2017 and newer Samsung TVs support the Plex app directly from the built-in store.
+
+#### Signing In
 
 1. Open Plex on your TV and select **Sign In**
 2. Note the code displayed on screen, then go to [plex.tv/link](https://plex.tv/link) on your phone or computer and enter the code
 3. Your account links immediately — no password typing on the TV required
 
-### Finding {{ server_name }}
+#### Finding {{ server_name }}
 
 1. After signing in, press the **left** or **back** button on your remote to open the Plex sidebar
 2. Scroll down until you see **{{ server_name }}** in the server list
 3. If it doesn't appear, sign out and back in — check the [troubleshooting guide](index.md#i-cant-find-{{ server_name | lower | replace(" ", "-") }}-in-the-app)
 
-### Playback Controls
+#### Playback Controls
 
-Use the **directional pad** on your TV remote to control playback — the exact button layout varies by model, but Plex shows on-screen icons when you press the down arrow or OK button during playback. Subtitles and audio track selection are accessible from the same on-screen menu.
+Use the **directional pad** on your TV remote — Plex shows on-screen icons when you press the down arrow or OK button during playback. Subtitles and audio track selection live in the same on-screen menu.
 
-!!! warning "Smart TV Limitations"
-    Built-in TV apps have weaker processors than dedicated streaming devices. If you experience frequent buffering or quality issues, a Fire TV Stick or Apple TV placed on the same TV will give a better experience. See [Recommended Streaming Devices](index.md#recommended-streaming-devices).
+### LG TV (webOS)
+
+!!! warning "webOS lossless audio is broken"
+    LG webOS 5.0+ has a long-standing bug where lossless audio tracks (TrueHD / DTS-HD MA) are silently downmixed to stereo PCM, even when the TV is connected to an Atmos-capable receiver. There is no fix on LG's side — use an Apple TV or Shield in front of the TV if audio matters to you.
+
+#### Installing Plex
+
+1. Open the **LG Content Store**
+2. Search for **Plex** and install it
+
+Most 2017 and newer LG TVs support the Plex app from the built-in store.
+
+#### Signing In
+
+1. Open Plex and select **Sign In**
+2. On your phone or computer, go to [plex.tv/link](https://plex.tv/link) and enter the code shown on screen
+
+#### Finding {{ server_name }}
+
+1. Press the **left** or **back** button on the Magic Remote to open the Plex sidebar
+2. Scroll until you see **{{ server_name }}** in the server list
+3. If it doesn't appear, see the [troubleshooting guide](index.md#i-cant-find-{{ server_name | lower | replace(" ", "-") }}-in-the-app)
+
+#### Playback Controls
+
+Point the Magic Remote at the screen and click to interact, or use the directional ring. Audio and subtitle menus appear when you press **down** or **OK** during playback.
+
+### Vizio TV (SmartCast)
+
+!!! warning "Vizio has no native Plex app on most models"
+    Most Vizio SmartCast TVs (2016–present) **do not include a native Plex app**. The "Plex" tile on the home screen is a Chromecast Built-in target — you cast to it from the Plex mobile or web app, which forces the server to transcode every stream. This is the worst-case path: poor picture quality, no Atmos passthrough, and your phone has to stay connected.
+
+#### How it actually works
+
+1. On your phone, open Plex and sign in
+2. Start playing something from **{{ server_name }}**
+3. Tap the <kbd>cast</kbd> icon and pick your Vizio TV
+4. Playback runs through Chromecast on the TV — your phone is the remote
+
+#### Limitations to expect
+
+- **No Atmos / lossless audio** — Chromecast on Vizio downmixes to stereo or 5.1 PCM
+- **Forced transcoding** — Anything above ~20 Mbps or in a non-standard codec is transcoded by the server, lowering quality
+- **No HDR / Dolby Vision on most models** — Even Vizio's "P-Series" with native DV doesn't get DV through the cast path
+- **Phone-tethered** — Closing Plex on your phone or losing WiFi stops playback
+
+#### Newer Vizio models (2022+ with built-in Plex)
+
+A small number of newer Vizio models ship with a real Plex app under **Apps → Plex**. If yours has one, install and sign in the same way as Samsung/LG above — but the [smart TV caveats at the top of this section](#smart-tvs-samsung--lg--vizio--not-recommended) still apply.
+
+### Better alternatives for your TV screen
+
+!!! tip "Plug a real streaming device into the same TV"
+    Any of these will give you a dramatically better experience than a Smart TV app, and they all plug into a spare HDMI port:
+
+    - **[Apple TV 4K](#apple-tv)** — best overall. Direct plays nearly every file, full Atmos and Dolby Vision passthrough, fastest UI. ~$130.
+    - **[NVIDIA Shield](#nvidia-shield)** — best for tinkerers and 4K HDR with Ethernet. Full lossless audio, AI upscaling. ~$200.
+    - **[Fire TV Stick 4K Max](#fire-tv-stick)** — cheapest path to a competent Plex experience. ~$60.
+
+    See [Recommended Streaming Devices](index.md#recommended-streaming-devices) for {{ admin_name | default("the admin") }}'s current pick.
 
 ---
 
