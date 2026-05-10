@@ -219,3 +219,163 @@ Setup and usage instructions for streaming devices. For general getting started 
 {% endif %}
 
 {% endif %}
+
+## Apple TV
+
+### Installing Plex
+
+1. From the Apple TV home screen, open the **App Store**
+2. Search for **Plex** and select it from the results
+3. Tap **Get** and wait for the download to complete
+
+### Signing In
+
+1. Open Plex and select **Sign In**
+2. The app shows a code on your TV screen — on your phone or computer, go to [plex.tv/link](https://plex.tv/link) and enter the code
+3. Once linked, your account is active on the Apple TV immediately
+
+### Finding {{ server_name }}
+
+1. From the Plex home screen, press the **back/menu button** (or swipe right on older remotes) to open the sidebar
+2. Look for **{{ server_name }}** under "Other Servers" or in the server list
+3. If you don't see it, check the [troubleshooting guide](index.md#i-cant-find-{{ server_name | lower | replace(" ", "-") }}-in-the-app)
+
+### Playback Controls
+
+| Action | Siri Remote Gesture |
+|--------|-------------------|
+| Play / pause | Press the <kbd>⏯</kbd> button or click the touchpad |
+| Skip forward 10 seconds | Swipe right on the touchpad |
+| Skip back 10 seconds | Swipe left on the touchpad |
+| Fast-forward / rewind | Hold the swipe |
+| Open subtitles / audio menu | Swipe down on the touchpad during playback |
+| Go back to the item page | Press <kbd>Back / Menu</kbd> |
+
+### Quality Settings
+
+1. From the Plex sidebar, scroll down to **Settings** and press the touchpad
+2. Select **Video Quality**
+3. Set **Remote Streaming** to **Original** or **Maximum**
+4. Press <kbd>Back</kbd> to save
+
+!!! tip "Direct Play on Apple TV 4K"
+    The Apple TV 4K plays most files natively (H.264, H.265, HDR10, Dolby Vision) without transcoding. Setting quality to **Original** prevents any quality loss.
+
+---
+
+## Roku
+
+### Installing Plex
+
+1. From the Roku home screen, scroll to **Streaming Channels** and open the **Channel Store**
+2. Search for **Plex** using the on-screen keyboard
+3. Select **Plex** and choose **Add Channel** — it installs in a few seconds
+
+### Signing In
+
+1. Open Plex from the Roku home screen
+2. Select **Sign In** — the app displays a short code on your TV
+3. On your phone or computer, go to [plex.tv/link](https://plex.tv/link) and enter the code
+
+### Finding {{ server_name }}
+
+1. From the Plex home screen, press the **left arrow** on the remote to open the sidebar
+2. Scroll down to find **{{ server_name }}** under the server list
+3. If you don't see it, check the [troubleshooting guide](index.md#i-cant-find-{{ server_name | lower | replace(" ", "-") }}-in-the-app)
+
+### Playback Controls
+
+| Button | During Playback |
+|--------|----------------|
+| <kbd>OK</kbd> | Play / pause |
+| <kbd>◀</kbd> (rewind) | Skip back 10 seconds |
+| <kbd>▶</kbd> (fast-forward) | Skip forward 30 seconds |
+| **Left / right** directional pad | Scrub through the timeline |
+| **Down** directional pad | Show audio, subtitle, and quality options |
+| <kbd>Back</kbd> | Stop and return to the item page |
+
+### Quality Settings
+
+1. On the Plex home screen, press the **left arrow** to open the sidebar
+2. Scroll down to **Settings** (gear icon)
+3. Select **Video Quality**
+4. Set both **Home Streaming** and **Remote Streaming** to **Original** or **Maximum**
+
+!!! warning "Roku and Lossless Audio"
+    Roku devices do not support lossless audio formats (TrueHD, Atmos). Plex will transcode the audio track to stereo automatically — video quality is unaffected.
+
+---
+
+## Smart TV (Samsung / LG)
+
+### Installing Plex
+
+- **Samsung (Tizen):** Open the **Smart Hub**, navigate to **Apps**, search for **Plex**, and install it.
+- **LG (webOS):** Open the **LG Content Store**, search for **Plex**, and install it.
+
+Most 2017 and newer Samsung and LG TVs support the Plex app directly from their built-in app stores.
+
+### Signing In
+
+1. Open Plex on your TV and select **Sign In**
+2. Note the code displayed on screen, then go to [plex.tv/link](https://plex.tv/link) on your phone or computer and enter the code
+3. Your account links immediately — no password typing on the TV required
+
+### Finding {{ server_name }}
+
+1. After signing in, press the **left** or **back** button on your remote to open the Plex sidebar
+2. Scroll down until you see **{{ server_name }}** in the server list
+3. If it doesn't appear, sign out and back in — check the [troubleshooting guide](index.md#i-cant-find-{{ server_name | lower | replace(" ", "-") }}-in-the-app)
+
+### Playback Controls
+
+Use the **directional pad** on your TV remote to control playback — the exact button layout varies by model, but Plex shows on-screen icons when you press the down arrow or OK button during playback. Subtitles and audio track selection are accessible from the same on-screen menu.
+
+!!! warning "Smart TV Limitations"
+    Built-in TV apps have weaker processors than dedicated streaming devices. If you experience frequent buffering or quality issues, a Fire TV Stick or Apple TV placed on the same TV will give a better experience. See [Recommended Streaming Devices](index.md#recommended-streaming-devices).
+
+---
+
+## Mobile Apps (iOS and Android)
+
+### Plex App
+
+The Plex app is the main way to watch {{ server_name }} on your phone or tablet.
+
+- **iPhone / iPad:** [Download from the App Store](https://apps.apple.com/app/plex/id383457673)
+- **Android:** [Download from Google Play](https://play.google.com/store/apps/details?id=com.plexapp.android)
+
+After installing, open the app, tap **Sign In**, and enter your Plex email and password. Tap {{ server_name }} on the left to start browsing.
+
+!!! note "One-Time Unlock Fee"
+    The Plex mobile app has a $5 one-time unlock fee to watch video. To skip this fee, watch via your phone's browser at [app.plex.tv](https://app.plex.tv) instead, or get [Plex Pass](https://www.plex.tv/plex-pass/) which includes the unlock.
+
+### Plexamp (Music)
+
+Plexamp is a dedicated music player for Plex — it streams your music library with a clean interface and gapless playback.
+
+- **iPhone / iPad:** [Download from the App Store](https://apps.apple.com/app/plexamp/id1500797510)
+- **Android:** [Download from Google Play](https://play.google.com/store/apps/details?id=tv.plex.labs.plexamp)
+
+Sign in with the same Plex account and select {{ server_name }} as your server. Plexamp works best for music libraries — use the main Plex app for movies and TV shows.
+
+!!! note "Plexamp Premium Features"
+    Some Plexamp features (offline sync, crossfade, lyrics) require a [Plex Pass](https://www.plex.tv/plex-pass/). Basic streaming works without it.
+
+---
+
+## Web Browser
+
+The Plex web player works in any modern browser — no download required.
+
+1. Go to [app.plex.tv](https://app.plex.tv) and sign in with your Plex email and password
+2. Select **{{ server_name }}** from the left sidebar
+3. Browse and play content directly in your browser
+
+**Tip:** Bookmark [app.plex.tv](https://app.plex.tv) for quick access — or use [{{ media_url }}](https://{{ media_url }}) if your admin set up a direct link.
+
+!!! note "Browser Limitations"
+    The web player does not support 4K, HDR, or lossless audio — these require a native app or dedicated device. Most HD content plays without issues.
+
+!!! tip "Free Streaming"
+    The browser player is always free and does not require the $5 mobile unlock fee or a Plex Pass subscription. If you're on a phone or tablet, open your browser and go to [app.plex.tv](https://app.plex.tv) to watch without any fees.
