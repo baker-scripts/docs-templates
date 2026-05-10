@@ -306,7 +306,7 @@ Setup and usage instructions for streaming devices. For general getting started 
 
 ---
 
-## Smart TVs (Samsung / LG / Vizio) — not recommended {#smart-tvs-not-recommended}
+## Smart TVs (Samsung / LG / Vizio) — not recommended
 
 !!! danger "Smart TV apps are the worst way to watch {{ server_name }}"
     Built-in TV Plex apps are the lowest-quality, least-reliable option for streaming. We strongly recommend a dedicated streaming device instead. Reasons:
@@ -396,7 +396,7 @@ Point the Magic Remote at the screen and click to interact, or use the direction
 
 #### Newer Vizio models (2022+ with built-in Plex)
 
-A small number of newer Vizio models ship with a real Plex app under **Apps → Plex**. If yours has one, install and sign in the same way as Samsung/LG above — but the [smart TV caveats at the top of this section](#smart-tvs-not-recommended) still apply.
+A small number of newer Vizio models ship with a real Plex app under **Apps → Plex**. If yours has one, install and sign in the same way as Samsung/LG above — but the **smart TV caveats from the top of this section** still apply.
 
 ### Better alternatives for your TV screen
 
