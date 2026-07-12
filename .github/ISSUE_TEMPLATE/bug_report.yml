@@ -47,8 +47,20 @@ body:
       render: yaml
 
   - type: input
+    id: template-version
+    attributes:
+      label: docs-templates version
+      description: Which commit/tag are you on? Run `git rev-parse --short HEAD`. Check you're not behind `main` before reporting — it may already be fixed.
+      placeholder: "e.g. a6bde17, or 'main as of 2026-03-12'"
+    validations:
+      required: true
+
+  - type: textarea
     id: mkdocs-version
     attributes:
-      label: MkDocs version
-      description: Output of `mkdocs --version`
-      placeholder: "mkdocs, version 1.6.x"
+      label: Dependency versions
+      description: Output of `pip freeze | grep -i mkdocs` (captures mkdocs, mkdocs-material, and mkdocs-macros-plugin versions)
+      placeholder: |
+        mkdocs==1.6.1
+        mkdocs-material==9.x.x
+        mkdocs-macros-plugin==1.x.x
