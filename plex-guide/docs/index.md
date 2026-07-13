@@ -209,7 +209,7 @@ The server's Plex Pass automatically benefits **all users**:
 
 ### Get Your Own Plex Pass (Optional)
 
-A personal [Plex Pass](https://www.plex.tv/plex-pass/) ($6.99/month, $69.99/year, or $249.99 lifetime) gives you features the server can't provide:
+A personal [Plex Pass](https://www.plex.tv/plex-pass/) ($6.99/month, $69.99/year, $249.99 for 5 years, or $749.99 lifetime) gives you features the server can't provide:
 
 <!-- markdownlint-disable MD055 MD056 -->
 | Feature | Description |
@@ -226,7 +226,7 @@ A personal [Plex Pass](https://www.plex.tv/plex-pass/) ($6.99/month, $69.99/year
 Compare all options at [plex.tv/plans](https://www.plex.tv/plans/).
 
 !!! tip "Is Plex Pass Worth It?"
-    **Most users: yes.** The $249.99 lifetime pass pays for itself quickly. You get Skip Intro/Credits on every show, offline downloads for travel, and free mobile apps. The $69.99/year option is good if you want to try it first.
+    **Most users: yes.** The $69.99/year option is a good first choice, the $249.99 5-Year plan is the long-term value option, and Lifetime is now a higher one-time purchase. You get Skip Intro/Credits on every show, offline downloads for travel, and free mobile apps.
 
 !!! note "Phone/Tablet App Without Plex Pass"
     The Plex mobile app has a one-time $5 unlock fee. To avoid this:
@@ -244,13 +244,13 @@ Since late 2025, Plex requires a paid plan to stream remotely on TV and mobile a
 | Plan | Price | What You Get |
 |------|-------|-------------|
 | **Remote Watch Pass** | $2.99/month or $29.99/year | Remote streaming on TV and mobile apps |
-| **Plex Pass** | $6.99/month, $69.99/year, or $249.99 lifetime | Remote streaming + Skip Intro/Credits, Downloads, Lyrics, Free Mobile App, and more |
+| **Plex Pass** | $6.99/month, $69.99/year, $249.99 for 5 years, or $749.99 lifetime | Remote streaming + Skip Intro/Credits, Downloads, Lyrics, Free Mobile App, and more |
 <!-- markdownlint-enable MD055 MD056 -->
 
 Compare all options at [plex.tv/plans](https://www.plex.tv/plans/).
 
 !!! tip "Which Plan Should I Get?"
-    If you only watch on your **computer browser**, you don't need either plan. If you watch on a **TV, phone, or tablet**, the **Remote Watch Pass** ($2.99/month) is the minimum. **Plex Pass** adds Skip Intro/Credits, offline downloads, and other features — the $249.99 lifetime option pays for itself quickly.
+    If you only watch on your **computer browser**, you don't need either plan. If you watch on a **TV, phone, or tablet**, the **Remote Watch Pass** ($2.99/month) is the minimum. **Plex Pass** adds Skip Intro/Credits, offline downloads, and other features — yearly is the best first step, while the 5-Year and Lifetime plans are longer-term buys.
 
 !!! note "Phone/Tablet App Without Plex Pass"
     The Plex mobile app has a one-time $5 unlock fee. To avoid this:
