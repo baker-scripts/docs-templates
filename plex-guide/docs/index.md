@@ -24,7 +24,6 @@ tags:
 | Action | Link |
 |--------|------|
 | **Watch Now** | [{{ media_url }}](https://{{ media_url }}) |
-| **Join BakerFlix** | [join.bakerflix.xyz](https://join.bakerflix.xyz) |
 {% if has_request_system %}| **Request Something** | [{{ request_url }}](https://{{ request_url }}) |
 {% endif %}{% if has_discord %}| **Get Notifications** | [Discord]({{ discord_url }}) |
 {% endif %}{% if has_newsletter %}| **Weekly Newsletter** | [What's New]({{ newsletter_url }}) |
@@ -87,7 +86,7 @@ If your stream was stopped or you're having trouble, find your situation below.
 
     **Can't find {{ server_name }}?**
 
-    → Open [join.bakerflix.xyz](https://join.bakerflix.xyz) or check your email for an invite from Plex and click **Accept**
+    → Check your email for an invite from Plex and click **Accept**
 
     → Sign out and back in ([how to sign out](https://support.plex.tv/articles/201862428-plex-accounts/))
 
@@ -114,10 +113,10 @@ If your stream was stopped or you're having trouble, find your situation below.
 1. Go to [plex.tv/sign-up](https://www.plex.tv/sign-up/)
 2. Enter your **email** and pick a **password**
 3. Check your email and click the confirmation link
-4. Open [join.bakerflix.xyz](https://join.bakerflix.xyz) and follow the join wizard, or **{{ admin_contact }} your email address** if you were told to use manual setup
+4. **{{ admin_contact }} your email address** so they can give you access
 
 !!! warning "One-Time Requirement"
-    Your Plex account needs to be added before {{ server_name }} appears. The join wizard handles this for most new users; manual help is only needed when the invite is missing, expired, or tied to the wrong email.
+    {{ admin_name }} needs to add your email before {{ server_name }} appears. This only needs to happen once.
 
 ### Step 2: Get the Plex App
 
@@ -142,7 +141,7 @@ For more device setup help, see [Plex's official app guide](https://support.plex
 5. Start watching!
 
 !!! tip "Can't Find {{ server_name }}?"
-    1. Open [join.bakerflix.xyz](https://join.bakerflix.xyz) and finish the wizard, or check your email for an invitation from Plex and click "Accept"
+    1. Check your email for an invitation from Plex - click "Accept"
     2. Sign out and back in (see [how to sign out](https://support.plex.tv/articles/201862428-plex-accounts/))
     3. If you never got an invite, confirm {{ admin_name }} has your correct email
 
@@ -592,7 +591,7 @@ Make sure no one changed your email address:
 If you received a message that you're not authorized to use this account, you need your **own** free Plex account:
 
 1. Go to [plex.tv/sign-up](https://www.plex.tv/sign-up/) and create a free account
-2. Open [join.bakerflix.xyz](https://join.bakerflix.xyz) and finish the join wizard, or **{{ admin_contact }} your email address** if manual setup is needed
+2. **{{ admin_contact }} your email address** so they can invite you to {{ server_name }}
 3. Check your email for the invitation and click **Accept**
 
 This is free and takes 2 minutes. See [Getting Started](#getting-started-one-time-setup) above for full setup instructions.
