@@ -25,6 +25,7 @@ tags:
 |--------|------|
 | **Watch Now** | [{{ media_url }}](https://{{ media_url }}) |
 {% if has_request_system %}| **Request Something** | [{{ request_url }}](https://{{ request_url }}) |
+{% endif %}{% if has_wizarr_join %}| **Get Invited** | [{{ wizarr_join_url }}]({{ wizarr_join_url }}) |
 {% endif %}{% if has_discord %}| **Get Notifications** | [Discord]({{ discord_url }}) |
 {% endif %}{% if has_newsletter %}| **Weekly Newsletter** | [What's New]({{ newsletter_url }}) |
 {% endif %}| **Plex Help Center** | [support.plex.tv](https://support.plex.tv/articles/) |
