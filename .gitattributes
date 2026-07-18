@@ -1,0 +1,35 @@
+# Normalize line endings: LF in the repository, auto-convert on checkout.
+* text=auto eol=lf
+
+# POSIX shell scripts stay LF even on Windows checkouts.
+*.sh   text eol=lf
+*.bash text eol=lf
+
+# Native Windows scripts use CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary files: never convert.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary
+*.pdf  binary
+*.zip  binary
+*.gz   binary
+*.tar  binary
+*.7z   binary
+*.woff  binary
+*.woff2 binary
+*.ttf  binary
+*.eot  binary
+*.mp4  binary
+*.mov  binary
+*.mp3  binary
+*.dll  binary
+*.exe  binary
+*.so   binary
+*.dylib binary
