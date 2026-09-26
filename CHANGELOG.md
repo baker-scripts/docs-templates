@@ -2,6 +2,28 @@
 
 All notable changes to this project are documented here. Releases follow [Semantic Versioning](https://semver.org/).
 
+## [1.12.0](https://github.com/baker-scripts/docs-templates/compare/v1.11.0...v1.12.0) (2026-09-26)
+
+
+### Features
+
+* **plex-guide:** add boolean-controlled Wizarr join link ([5d6e588](https://github.com/baker-scripts/docs-templates/commit/5d6e588604245b2c8958ce4c907b31d28784892e))
+* **plex-guide:** make the invite link example a config param ([8ec4551](https://github.com/baker-scripts/docs-templates/commit/8ec4551f4ebbafb57e3e9266374ac03e156d887c))
+* **plex:** link onboarding guide to wizarr ([17e066c](https://github.com/baker-scripts/docs-templates/commit/17e066c0210ad833b2a8c5511e6e07ea9c8cec51))
+
+
+### Fixes
+
+* **plex:** keep invite links out of guide ([2bba3a6](https://github.com/baker-scripts/docs-templates/commit/2bba3a63e518fe4803c834080b1191e0c344a264))
+* **plex:** update Plex Pass pricing copy ([1230bfa](https://github.com/baker-scripts/docs-templates/commit/1230bfab5cc89fd0b33df07975a6504e00f6d589))
+
+
+### Documentation
+
+* **plex-guide:** account sharing policy, invite flow, 4K audio note ([e64e14c](https://github.com/baker-scripts/docs-templates/commit/e64e14c0e9a56b7c75f1ce3a4e1ded7a0704cce7))
+* rename Overseerr/Jellyseerr to Seerr ([9ffd542](https://github.com/baker-scripts/docs-templates/commit/9ffd542de5a6b9ff5f42e0edd7d7654d9b0b7db2))
+* standardize README structure ([faf86e3](https://github.com/baker-scripts/docs-templates/commit/faf86e30fb8418d644c819650599d2a576792197))
+
 ## [1.11.0](https://github.com/baker-scripts/docs-templates/compare/v1.10.2...v1.11.0) (2026-07-11)
 
 ### Documentation
