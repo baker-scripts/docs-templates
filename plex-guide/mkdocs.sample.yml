@@ -65,6 +65,7 @@ extra:
   request_url: "requests.example.com"     # Overseerr/Jellyseerr URL
   has_wizarr_join: false                  # Set to true if you use Wizarr for self-service invites
   wizarr_join_url: ""                     # Wizarr public invite URL
+  invite_url_example: ""                  # Sample invite link shown to users (e.g., "join.example.com/j/..."); leave empty to hide
   has_discord: false                      # Set to true if you have a Discord server
   discord_url: ""                         # Discord invite link
   has_newsletter: false                   # Set to true if you use Tautulli newsletters
