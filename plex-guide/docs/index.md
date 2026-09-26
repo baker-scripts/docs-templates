@@ -60,6 +60,8 @@ If your stream was stopped or you're having trouble, find your situation below.
     1. In the Plex app, set quality to **Original** or **Maximum** (see [quality settings](#the-picture-looks-bad-or-blurry))
     2. If that doesn't help, your device may not support 4K — try a different device (see [recommended devices](#recommended-streaming-devices))
     3. {{ admin_contact }} if you need help
+
+    This only applies to video. Changing or downmixing the audio track never stops a stream.
 {% endif %}
 {% if has_stream_limits %}
 
@@ -107,17 +109,27 @@ If your stream was stopped or you're having trouble, find your situation below.
 
 ---
 
+## Account Sharing Policy
+
+**One account per person.** Your login is for you only.
+
+- Sharing your login stops streams for everyone using that account at the same time.
+- All account activity is logged.
+- Repeat sharing violations get the account removed.
+- Your own access is free. {{ admin_contact }} and ask for an invite link.
+
+---
+
 ## Getting Started (One-Time Setup)
 
-### Step 1: Create Your Free Account
+### Step 1: Get Your Invite Link
 
-1. Go to [plex.tv/sign-up](https://www.plex.tv/sign-up/)
-2. Enter your **email** and pick a **password**
-3. Check your email and click the confirmation link
-4. **{{ admin_contact }} your email address** so they can give you access
+1. {{ admin_contact }} and ask for your invite link (it looks like `join.bakerflix.xyz/j/...`)
+2. Open the link {{ admin_name }} sends you
+3. Follow the steps on the page - it creates your Plex account and connects it to {{ server_name }}
 
-!!! warning "One-Time Requirement"
-    {{ admin_name }} needs to add your email before {{ server_name }} appears. This only needs to happen once.
+!!! warning "Invite-Only"
+    {{ server_name }} has no public sign-up. You need a personal invite link from {{ admin_name }} before you can create an account.
 
 ### Step 2: Get the Plex App
 
@@ -591,9 +603,8 @@ Make sure no one changed your email address:
 
 If you received a message that you're not authorized to use this account, you need your **own** free Plex account:
 
-1. Go to [plex.tv/sign-up](https://www.plex.tv/sign-up/) and create a free account
-2. **{{ admin_contact }} your email address** so they can invite you to {{ server_name }}
-3. Check your email for the invitation and click **Accept**
+1. {{ admin_contact }} and ask for your own invite link (it looks like `join.bakerflix.xyz/j/...`)
+2. Open the link and follow the steps - it creates your Plex account and connects it to {{ server_name }}
 
 This is free and takes 2 minutes. See [Getting Started](#getting-started-one-time-setup) above for full setup instructions.
 
@@ -606,9 +617,10 @@ This is free and takes 2 minutes. See [Getting Started](#getting-started-one-tim
 
 If you need to move to a new Plex account (new email, etc.), {{ admin_name }} can **migrate your entire watch history** to the new account. All your watched/unwatched status transfers over — no need to start from scratch.
 
-1. Create your new account at [plex.tv/sign-up](https://www.plex.tv/sign-up/)
-2. {{ admin_contact }} your **new email** and **old username**
-3. {{ admin_name }} will transfer your watch history and add you to {{ server_name }}
+1. {{ admin_contact }} and ask for a new invite link (it looks like `join.bakerflix.xyz/j/...`)
+2. Open the link and follow the steps to create your new account
+3. {{ admin_contact }} your **new email** and **old username**
+4. {{ admin_name }} will transfer your watch history and add you to {{ server_name }}
 {% endif %}
 
 ---
