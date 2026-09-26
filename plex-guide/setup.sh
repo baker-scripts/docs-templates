@@ -100,7 +100,7 @@ prompt media_url "Plex access URL (without https://)" "app.plex.tv"
 # Optional features
 printf "\n%b=== Optional Features ===%b\n\n" "$YELLOW" "$NC"
 
-prompt_bool has_request_system "Do you run Overseerr/Jellyseerr?" "false"
+prompt_bool has_request_system "Do you run Seerr?" "false"
 request_url=""
 if [[ "$has_request_system" == "true" ]]; then
   prompt request_url "Request system URL (without https://)" "requests.example.com"
