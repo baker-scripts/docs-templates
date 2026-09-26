@@ -124,7 +124,7 @@ If your stream was stopped or you're having trouble, find your situation below.
 
 ### Step 1: Get Your Invite Link
 
-1. {{ admin_contact }} and ask for your invite link (it looks like `join.bakerflix.xyz/j/...`)
+1. {{ admin_contact }} and ask for your invite link{% if invite_url_example %} (it looks like `{{ invite_url_example }}`){% endif %}
 2. Open the link {{ admin_name }} sends you
 3. Follow the steps on the page - it creates your Plex account and connects it to {{ server_name }}
 
@@ -603,7 +603,7 @@ Make sure no one changed your email address:
 
 If you received a message that you're not authorized to use this account, you need your **own** free Plex account:
 
-1. {{ admin_contact }} and ask for your own invite link (it looks like `join.bakerflix.xyz/j/...`)
+1. {{ admin_contact }} and ask for your own invite link{% if invite_url_example %} (it looks like `{{ invite_url_example }}`){% endif %}
 2. Open the link and follow the steps - it creates your Plex account and connects it to {{ server_name }}
 
 This is free and takes 2 minutes. See [Getting Started](#getting-started-one-time-setup) above for full setup instructions.
@@ -617,7 +617,7 @@ This is free and takes 2 minutes. See [Getting Started](#getting-started-one-tim
 
 If you need to move to a new Plex account (new email, etc.), {{ admin_name }} can **migrate your entire watch history** to the new account. All your watched/unwatched status transfers over — no need to start from scratch.
 
-1. {{ admin_contact }} and ask for a new invite link (it looks like `join.bakerflix.xyz/j/...`)
+1. {{ admin_contact }} and ask for a new invite link{% if invite_url_example %} (it looks like `{{ invite_url_example }}`){% endif %}
 2. Open the link and follow the steps to create your new account
 3. {{ admin_contact }} your **new email** and **old username**
 4. {{ admin_name }} will transfer your watch history and add you to {{ server_name }}
