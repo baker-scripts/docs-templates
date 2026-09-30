@@ -7,6 +7,10 @@ name: Pre-commit
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   pre-commit:
     uses: baker-scripts/.github/.github/workflows/pre-commit.yml@401dae28479d6a8e4c63f3736e07225f94545083 # main
