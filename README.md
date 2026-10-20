@@ -2,21 +2,20 @@
 
 [![Build Plex Guide](https://github.com/baker-scripts/docs-templates/actions/workflows/build.yml/badge.svg)](https://github.com/baker-scripts/docs-templates/actions/workflows/build.yml)
 [![Lint](https://github.com/baker-scripts/docs-templates/actions/workflows/lint.yml/badge.svg)](https://github.com/baker-scripts/docs-templates/actions/workflows/lint.yml)
+[![Release](https://img.shields.io/github/v/release/baker-scripts/docs-templates)](https://github.com/baker-scripts/docs-templates/releases)
 [![Live Preview](https://img.shields.io/badge/Live_Preview-GitHub_Pages-blue)](https://baker-scripts.github.io/docs-templates/plex/)
 
-MkDocs documentation templates with variable substitution. Fork, customize, and deploy your own documentation site.
+MkDocs documentation templates with Jinja2 variable substitution (`mkdocs-macros-plugin`). Fork, set your values, and deploy your own site.
 
-## Available Templates
+| Template | Description | Live preview |
+| --- | --- | --- |
+| [Plex Guide](plex-guide/) | User-facing guide for a Plex media server | [Preview](https://baker-scripts.github.io/docs-templates/plex/) |
 
-| Template | Description | Live Preview |
-|----------|-------------|--------------|
-| [Plex Guide](plex-guide/) | User-facing guide for Plex media servers | [Preview](https://baker-scripts.github.io/docs-templates/plex/) |
-
-**Coming soon:** Plan templates, runbook templates.
+`plans/` and `runbooks/` are empty placeholders for future templates.
 
 ## Quick Start (Plex Guide)
 
-### Option 1: Interactive Setup (Recommended)
+Interactive:
 
 ```bash
 git clone https://github.com/baker-scripts/docs-templates.git
@@ -24,122 +23,56 @@ cd docs-templates/plex-guide
 ./setup.sh
 ```
 
-The script will:
+`setup.sh` prompts for server details and feature toggles, writes `mkdocs.yml` from `mkdocs.sample.yml`, then offers to build static HTML, start a live preview, or skip the build. It needs `mkdocs` on your `PATH` to build.
 
-1. Ask for your server details (name, URLs, features)
-2. Generate a configured `mkdocs.yml` from the sample
-3. Build static HTML or start a live preview
-
-### Option 2: Manual Setup
+Manual:
 
 ```bash
-git clone https://github.com/baker-scripts/docs-templates.git
 cd docs-templates/plex-guide
-
-# Copy sample config and edit it
-cp mkdocs.sample.yml mkdocs.yml
-# Edit the `extra:` section in mkdocs.yml with your values
-
-# Install dependencies and build
-pip install -r requirements.txt
-mkdocs build        # Static HTML in site/
-# or
-mkdocs serve        # Live preview at http://localhost:8000
+cp mkdocs.sample.yml mkdocs.yml   # edit the extra: section
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/mkdocs build            # static HTML in site/
+.venv/bin/mkdocs serve            # live preview at http://localhost:8000
 ```
 
-### Option 3: Docker
+Docker:
 
 ```bash
 cd docs-templates/plex-guide
 cp mkdocs.sample.yml mkdocs.yml
-# Edit mkdocs.yml with your values
-
 docker run --rm -v "$(pwd):/docs" squidfunk/mkdocs-material build
 ```
 
-## Adding to an Existing MkDocs Repo
+`mkdocs.yml` is gitignored so personal values stay out of commits. MkDocs is pinned to v1 (`>=1.6.1,<2`).
 
-If you already have a MkDocs site and want to add the Plex guide:
+## Configuration
 
-1. **Install the macros plugin:**
+Set variables in the `extra:` section of `mkdocs.yml`. Reference them as `{{ variable_name }}` in markdown. Conditional sections use `{% if has_feature %}...{% endif %}`.
 
-   ```bash
-   pip install mkdocs-macros-plugin
-   ```
-
-2. **Add the plugin to your `mkdocs.yml`:**
-
-   ```yaml
-   plugins:
-     - macros:
-         render_by_default: false
-   ```
-
-   > `render_by_default: false` prevents the plugin from processing `{{ }}` in your other pages (like Docker commands). Only pages with `render_macros: true` in their frontmatter will use variable substitution.
-
-3. **Add variables to `extra:` in your `mkdocs.yml`:**
-
-   ```yaml
-   extra:
-     server_name: "My Server"
-     admin_name: "Admin"
-     admin_contact: "Message Admin"
-     media_url: "app.plex.tv"
-     has_request_system: false
-     # ... see Variable Reference below
-   ```
-
-4. **Copy the template pages** into your docs directory:
-
-   ```bash
-   cp plex-guide/docs/index.md your-docs/guides/plex/index.md
-   cp plex-guide/docs/device-setup.md your-docs/guides/plex/device-setup.md
-   ```
-
-   If using as a git submodule, add these `cp` commands to your build pipeline (Docker entrypoint, CI workflow, or `make build` target). The template is the source of truth — don't edit the local copies.
-
-5. **Add `render_macros: true`** to the page's frontmatter (already included in the template).
-
-6. **Configure `admin_contact` as a cross-page link** if you use multiple template pages. The `#contact-aj` anchor only exists on `index.md`, so use:
-
-   ```yaml
-   admin_contact: "[Contact Admin](index.md#contact-aj)"
-   ```
-
-   Using a same-page anchor like `[Contact Admin](#contact-aj)` will fail the mkdocs build in strict mode when the macro expands on `device-setup.md`.
-
-7. **Gitignore the local copies** so they're always sourced from the template:
-
-   ```gitignore
-   docs/guides/plex/index.md
-   docs/guides/plex/device-setup.md
-   ```
-
-## Variable Reference
-
-### Required
+Required:
 
 | Variable | Description | Example |
-|----------|-------------|---------|
+| --- | --- | --- |
 | `server_name` | Display name for your server | `"My Plex Server"` |
-| `admin_name` | Server admin's first name | `"John"` |
-| `admin_contact` | How users should reach you | `"Text John"` |
-| `media_url` | Plex access URL (no `https://`) | `"plex.example.com"` |
+| `admin_name` | Admin's first name | `"John"` |
+| `admin_contact` | How users reach you | `"Text John"` |
+| `media_url` | Plex access URL, no `https://` | `"plex.example.com"` |
 
-### Optional Features
-
-Set to `true` to show the section, `false` to hide it.
+Optional features (`true` shows the section, `false` hides it). Defaults are from `mkdocs.sample.yml`:
 
 | Variable | Default | Description |
-|----------|---------|-------------|
+| --- | --- | --- |
 | `has_request_system` | `true` | Seerr request system |
-| `request_url` | `""` | Request system URL |
-| `invite_url_example` | `""` | Sample invite link shown in the sign-up steps (e.g. `join.example.com/j/...`); empty hides it |
-| `has_discord` | `false` | Discord notification server |
+| `request_url` | `"requests.example.com"` | Request system URL |
+| `has_wizarr_join` | `false` | Wizarr self-service invites |
+| `wizarr_join_url` | `""` | Wizarr public invite URL |
+| `invite_url_example` | `""` | Sample invite link in the sign-up steps; empty hides it |
+| `has_discord` | `false` | Discord server |
 | `discord_url` | `""` | Discord invite link |
 | `has_newsletter` | `false` | Tautulli newsletter |
 | `newsletter_url` | `""` | Newsletter URL |
-| `has_guide_url` | `false` | Public guide link at top of page |
+| `has_guide_url` | `false` | Public guide link at the top of the page |
 | `guide_url` | `""` | Public URL for the guide |
 | `has_plex_pass` | `true` | Plex Pass features section |
 | `has_plex_home` | `false` | Plex Home notes |
@@ -148,78 +81,104 @@ Set to `true` to show the section, `false` to hide it.
 | `has_migration` | `false` | Watch history migration section |
 | `show_costs` | `false` | Server cost information |
 | `server_cost` | `""` | Monthly cost string |
-| `speedtest_url` | `""` | Speed test URL (falls back to `fast.com`) |
+| `speedtest_url` | `""` | Speed test URL; falls back to `fast.com` |
+| `has_stream_monitoring` | `false` | Master toggle for the "Your Stream Was Stopped" section |
+| `has_geo_restriction` | `false` | Geo-based stream kills (VPN, out-of-country) |
+| `has_transcode_protection` | `false` | 4K transcode protection kills |
+| `has_stream_limits` | `false` | Per-user simultaneous stream limit kills |
+| `has_impossible_travel` | `false` | Impossible-travel detection kills |
+| `has_fire_tv` | `true` | Fire TV Stick setup instructions |
+| `has_shield` | `true` | NVIDIA Shield setup instructions |
 
-### Contact Card
+`setup.sh` does not prompt for `has_wizarr_join`, `wizarr_join_url`, `invite_url_example`, `has_fire_tv`, `has_shield`, or `contact_methods`. Set those in `mkdocs.yml` by hand.
 
-The `contact_methods` variable configures a bot-protected contact card at the bottom of the guide. Values are base64-encoded at build time and decoded by JavaScript at runtime.
+### Contact card
+
+`contact_methods` configures a contact card at the bottom of the guide. Values are base64-encoded at build time and decoded by JavaScript at runtime; a `noscript` fallback shows them undecoded.
 
 ```yaml
 contact_methods:
   - type: signal_url
     label: "Message on Signal"
     value: "https://signal.me/#eu/..."
-    preferred: true    # Shows a "preferred" badge
+    preferred: true    # shows a "preferred" badge
   - type: email
     label: "Email"
     value: "admin@example.com"
 ```
 
-| Type | Behavior | Value Format |
-|------|----------|--------------|
+| Type | Behavior | Value format |
+| --- | --- | --- |
 | `email` | `mailto:` link | `admin@example.com` |
 | `phone` | `tel:` link | `+15551234567` |
 | `signal_url` | Clickable Signal invite | `https://signal.me/#eu/...` |
-| `signal_username` | Plain text (no link) | `username.123` |
+| `signal_username` | Plain text | `username.123` |
 | `telegram` | `t.me/` link | `username` |
-| `discord` | Plain text (no link) | `username` |
+| `discord` | Plain text | `username` |
 | `whatsapp` | `wa.me/` link | `+15551234567` |
 | `imessage` | `sms:` link | `+15551234567` |
 
-## How It Works
+## Usage
 
-Templates use [mkdocs-macros-plugin](https://mkdocs-macros-plugin.readthedocs.io/) for Jinja2 variable substitution. Variables defined in the `extra:` section of `mkdocs.yml` are available as `{{ variable_name }}` in markdown files.
+### Add the guide to an existing MkDocs site
 
-Conditional sections use `{% if feature_flag %}...{% endif %}` to show/hide content based on your configuration.
+1. Install the plugin: `pip install mkdocs-macros-plugin`.
+2. Enable it in your `mkdocs.yml`:
 
-## Theme Features
+   ```yaml
+   plugins:
+     - macros:
+         render_by_default: false
+   ```
 
-The template uses [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) with a dark-first theme (slate) and light mode toggle. The following features are enabled:
+   `render_by_default: false` stops the plugin from processing `{{ }}` in your other pages (such as Docker commands). Only pages with `render_macros: true` in their frontmatter get substitution; the template pages already set it.
 
-| Feature | Description |
-|---------|-------------|
-| `navigation.sections` | Groups top-level sections in the sidebar with visible headers |
-| `navigation.instant` | Loads pages via XHR without full page reload for faster navigation |
-| `toc.follow` | Automatically scrolls the table of contents sidebar to highlight the active heading |
-| `search.suggest` | Shows search term suggestions as you type in the search bar |
-| `search.highlight` | Highlights matching search terms on the page after navigating from search results |
-| `content.code.copy` | Adds a copy-to-clipboard button on all code blocks |
-| `content.code.annotate` | Enables numbered annotations inside code blocks with expandable tooltips |
-| `content.tabs.link` | Syncs tab selection across all tabbed content blocks on the page |
+3. Add the variables above to `extra:`.
+4. Copy the template pages into your docs directory:
 
-## Deployment
+   ```bash
+   cp plex-guide/docs/index.md your-docs/guides/plex/index.md
+   cp plex-guide/docs/device-setup.md your-docs/guides/plex/device-setup.md
+   ```
 
-### GitHub Pages (automatic)
+   If the template is a git submodule, run these copies in your build pipeline and do not edit the local copies.
+5. Copy `plex-guide/main.py` next to your `mkdocs.yml`. It provides the `contact_card()` macro that `index.md` calls.
+6. If you use both pages, make `admin_contact` a cross-page link. The contact anchor is generated from the `## Contact {{ admin_name }}` heading, so it exists only on `index.md` (for `admin_name: "AJ"` it is `#contact-aj`):
 
-This repo includes a GitHub Action that builds the template with sample values and deploys to GitHub Pages. Fork the repo, enable Pages in your fork's settings, and your guide will be available at `https://<your-username>.github.io/docs-templates/plex/`.
+   ```yaml
+   admin_contact: "[Contact Admin](index.md#contact-aj)"
+   ```
 
-### Static Hosting
+   A same-page anchor fails the build in strict mode when the macro expands on `device-setup.md`.
+7. Gitignore the copies so they always come from the template:
 
-Run `mkdocs build` and upload the `site/` directory to any web server (Nginx, Apache, Caddy, S3, Netlify, Vercel, etc.).
+   ```gitignore
+   docs/guides/plex/index.md
+   docs/guides/plex/device-setup.md
+   ```
 
-### MkDocs Serve
+### Theme
 
-Run `mkdocs serve` for a local development server with live reload at `http://localhost:8000`.
+The sample config uses Material for MkDocs with a dark-first palette (slate) and a light toggle. Enabled features: `navigation.sections`, `navigation.instant`, `toc.follow`, `search.suggest`, `search.highlight`, `content.code.copy`, `content.code.annotate`, and `content.tabs.link`.
+
+### Deployment
+
+- GitHub Pages: the `Build Plex Guide` workflow builds with the sample config and deploys to Pages on pushes to `main` that touch `plex-guide/**`. In a fork, enable Pages; the guide serves at `https://<your-username>.github.io/docs-templates/plex/`.
+- Static hosting: run `mkdocs build` and upload `site/` to any web server.
+
+## Development
+
+```bash
+npx markdownlint-cli2 "**/*.md"
+shellcheck plex-guide/setup.sh
+yamllint -d relaxed .
+```
+
+CI runs markdownlint, ShellCheck, and yamllint on pull requests. Adding a variable means updating `mkdocs.sample.yml`, `setup.sh`, and the table above. Adding a contact type means updating `main.py` and `mkdocs.sample.yml`.
 
 ## Contributing
 
 Issues and pull requests welcome. See the [contributing guidelines](https://github.com/baker-scripts/.github/blob/main/CONTRIBUTING.md); [open an issue](https://github.com/baker-scripts/docs-templates/issues) to discuss larger changes.
-
-## Contributors
-
-<a href="https://github.com/baker-scripts/docs-templates/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=baker-scripts/docs-templates" alt="Contributors" />
-</a>
 
 ## Disclaimer
 
