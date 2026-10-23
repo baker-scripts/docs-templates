@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented here. Releases follow [Semantic Versioning](https://semver.org/).
 
+## [1.12.1](https://github.com/baker-scripts/docs-templates/compare/v1.12.0...v1.12.1) (2026-10-23)
+
+
+### Documentation
+
+* rewrite README ([58eddad](https://github.com/baker-scripts/docs-templates/commit/58eddad718ae962c098f52c9e9cc3913d1d26764))
+
 ## [1.12.0](https://github.com/baker-scripts/docs-templates/compare/v1.11.0...v1.12.0) (2026-09-26)
 
 
