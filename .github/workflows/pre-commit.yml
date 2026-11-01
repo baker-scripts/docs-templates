@@ -13,4 +13,4 @@ concurrency:
 
 jobs:
   pre-commit:
-    uses: baker-scripts/.github/.github/workflows/pre-commit.yml@8017bba46b6d036cd86d3e24341cb9915a020d94 # main
+    uses: baker-scripts/.github/.github/workflows/pre-commit.yml@4b60709b79fd3458601b56595b3a4abc6cc51b3a # main
