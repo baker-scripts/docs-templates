@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented here. Releases follow [Semantic Versioning](https://semver.org/).
 
+## [1.12.2](https://github.com/baker-scripts/docs-templates/compare/v1.12.1...v1.12.2) (2026-11-25)
+
+
+### Fixes
+
+* name Shield remote button by its position, drop 'Home button' wording ([068dfec](https://github.com/baker-scripts/docs-templates/commit/068dfec58f8bccb5d8c70a741abfc271876741c4))
+
 ## [1.12.1](https://github.com/baker-scripts/docs-templates/compare/v1.12.0...v1.12.1) (2026-10-23)
 
 
