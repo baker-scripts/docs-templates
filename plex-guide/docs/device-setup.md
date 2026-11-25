@@ -128,7 +128,7 @@ Setup and usage instructions for streaming devices. For general getting started 
 
 | Button | What It Does |
 |--------|-------------|
-| <kbd>Home</kbd> (circle icon) | Go to the Shield home screen |
+| The circle button, just under the big ring on the right side | Go to the Shield home screen |
 | <kbd>◀</kbd> (triangle/back) | Go back one screen |
 | Touchpad (swipe up/down/left/right) | Navigate menus |
 | Touchpad (click) | Select / confirm |
@@ -141,14 +141,14 @@ Setup and usage instructions for streaming devices. For general getting started 
 
 ### Installing Plex
 
-1. Press <kbd>Home</kbd>, navigate to **Apps**, and open the **Google Play Store**
+1. Press the circle button just under the big ring on the right side of the remote, navigate to **Apps**, and open the **Google Play Store**
 2. Select the search bar at the top and type **Plex** using the on-screen keyboard
 3. Select **Plex** from the results
 4. Click **Install** and wait for it to download
 
 ### Signing In
 
-1. Open Plex — press <kbd>Home</kbd>, navigate to **Apps**, select Plex
+1. Open Plex — press the circle button just under the big ring on the right side of the remote, navigate to **Apps**, select Plex
 2. Select **Sign in** and note the code shown on your TV
 3. On your phone or computer, go to [plex.tv/link](https://plex.tv/link) and enter the code
 

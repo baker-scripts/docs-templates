@@ -293,8 +293,8 @@ This is almost always an internet speed issue. Plex needs a stable connection to
 
     **Step 2: Restart the Plex app**
 
-    1. Press the **Home** button on your remote
-    2. Go back into the Plex app
+    1. Close the Plex app and return to your TV's main screen
+    2. Open the Plex app again
     3. Try playing your video again
 
     **Step 3: Restart your TV**
