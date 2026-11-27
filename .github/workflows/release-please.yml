@@ -8,6 +8,7 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
+  actions: write
 
 concurrency:
   group: release-please
@@ -20,3 +21,16 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        id: rp
+      # GITHUB_TOKEN-created PRs trigger no pull_request runs; dispatch the
+      # required-check workflows on the release branch instead.
+      - name: Dispatch required checks on release PRs
+        if: ${{ steps.rp.outputs.prs_created == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PRS: ${{ steps.rp.outputs.prs }}
+        run: |
+          for branch in $(jq -r '.[].headBranchName' <<<"$PRS"); do
+            gh workflow run lint.yml --ref "$branch"
+            gh workflow run pre-commit.yml --ref "$branch"
+          done
